@@ -1,3 +1,10 @@
+
+import numpy as np
+from scipy.signal import butter, filtfilt,spectrogram
+import pandas as pd
+from scipy.optimize import curve_fit
+
+
 # Fast Fourier Transform (FFT) calculation
 ################################################################################
 def FFT_calc(datos, samplefreq):

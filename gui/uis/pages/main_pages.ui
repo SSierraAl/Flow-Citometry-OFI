@@ -13,26 +13,11 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="main_pages_layout">
-   <property name="spacing">
-    <number>0</number>
-   </property>
-   <property name="leftMargin">
-    <number>5</number>
-   </property>
-   <property name="topMargin">
-    <number>5</number>
-   </property>
-   <property name="rightMargin">
-    <number>5</number>
-   </property>
-   <property name="bottomMargin">
-    <number>5</number>
-   </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QStackedWidget" name="pages">
      <property name="currentIndex">
-      <number>1</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="page_1">
       <property name="styleSheet">
@@ -1386,7 +1371,7 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QLabel" name="label_13">
+          <widget class="QLabel" name="label_44">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -1394,7 +1379,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Calibration&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700;&quot;&gt;Flow Velocity Profile&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -1424,105 +1409,71 @@
               <enum>QLayout::SetFixedSize</enum>
              </property>
              <item>
+              <spacer name="verticalSpacer_10">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="Line" name="line_15">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_45">
+               <property name="text">
+                <string>Calibration</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="Line" name="line_16">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="Vel_Start_Calib">
+               <property name="text">
+                <string>START</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <layout class="QGridLayout" name="gridLayout_5">
                <property name="sizeConstraint">
                 <enum>QLayout::SetFixedSize</enum>
                </property>
-               <item row="0" column="2">
-                <widget class="QPushButton" name="Calib_Stop_Scan_but">
+               <item row="2" column="1">
+                <widget class="QLineEdit" name="Vel_Steps_Calib">
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
                  <property name="text">
-                  <string>Stop Scaning</string>
+                  <string>10</string>
                  </property>
                 </widget>
                </item>
-               <item row="0" column="3">
-                <widget class="QPushButton" name="Calib_Reset_Scan_but">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="text">
-                  <string>Reset Grid</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="2">
-                <widget class="QLineEdit" name="lineEdit_Pixel_size">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="text">
-                  <string>1000</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="0">
-                <widget class="QLabel" name="label_32">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="text">
-                  <string>Size Pixels [um]:</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="3">
-                <widget class="QPushButton" name="update_param_scan_but">
-                 <property name="text">
-                  <string>Update Param</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0">
-                <widget class="QPushButton" name="Calib_Start_Scan_but">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="text">
-                  <string>Test Image</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="2">
-                <widget class="QLineEdit" name="lineEdit_Grid_Wsize">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
+               <item row="3" column="1">
+                <widget class="QLabel" name="Vel_Limit_X1">
                  <property name="text">
                   <string>10000</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="label_30">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="text">
-                  <string>Grid Width:</string>
                  </property>
                 </widget>
                </item>
@@ -1535,12 +1486,25 @@
                   </sizepolicy>
                  </property>
                  <property name="text">
-                  <string>Grid Height:</string>
+                  <string># Steps:</string>
                  </property>
                 </widget>
                </item>
-               <item row="2" column="2">
-                <widget class="QLineEdit" name="lineEdit_Grid_Hsize">
+               <item row="1" column="1">
+                <widget class="QLineEdit" name="Vel_Manual_X1">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>2000</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_30">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -1548,7 +1512,92 @@
                   </sizepolicy>
                  </property>
                  <property name="text">
-                  <string>10000</string>
+                  <string>Manual X1 [um]:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="QLabel" name="label_47">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Threshold Amp Peak:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="QLabel" name="label_48">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Limit X2:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="QLabel" name="label_46">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Manual X2 [um]:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_32">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Limit X1:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <widget class="QLineEdit" name="Vel_Manual_X2">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>7000</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QLineEdit" name="Vel_Threshold_Peak">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>30</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="3">
+                <widget class="QLabel" name="Vel_Limit_X2">
+                 <property name="text">
+                  <string>20000</string>
                  </property>
                 </widget>
                </item>
@@ -1568,9 +1617,16 @@
               </spacer>
              </item>
              <item>
-              <widget class="QLabel" name="label_37">
+              <widget class="Line" name="line_17">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_49">
                <property name="text">
-                <string>Zaber Ranges</string>
+                <string>Scanning</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -1578,7 +1634,14 @@
               </widget>
              </item>
              <item>
-              <layout class="QGridLayout" name="gridLayout_7" rowminimumheight="0,0,0,0,0,0,0,0" columnminimumwidth="0,0,0,0,0">
+              <widget class="Line" name="line_18">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QGridLayout" name="gridLayout_7">
                <property name="sizeConstraint">
                 <enum>QLayout::SetFixedSize</enum>
                </property>
@@ -1598,15 +1661,9 @@
                 <number>10</number>
                </property>
                <item row="0" column="2">
-                <widget class="QLineEdit" name="lineEdit_x1_scan">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
+                <widget class="QLabel" name="label_35">
                  <property name="text">
-                  <string>10000</string>
+                  <string>Y1 [um]:</string>
                  </property>
                 </widget>
                </item>
@@ -1617,8 +1674,8 @@
                  </property>
                 </widget>
                </item>
-               <item row="1" column="4">
-                <widget class="QLineEdit" name="lineEdit_y2_scan">
+               <item row="0" column="3">
+                <widget class="QLineEdit" name="lineEdit_y1_scan_2">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -1626,12 +1683,12 @@
                   </sizepolicy>
                  </property>
                  <property name="text">
-                  <string>22000</string>
+                  <string>37720</string>
                  </property>
                 </widget>
                </item>
-               <item row="4" column="2">
-                <widget class="QLineEdit" name="lineEdit_scamples_avg_scan">
+               <item row="2" column="3">
+                <widget class="QLineEdit" name="lineEdit_speed_ums">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -1643,15 +1700,21 @@
                  </property>
                 </widget>
                </item>
-               <item row="1" column="3">
-                <widget class="QLabel" name="label_36">
+               <item row="2" column="1">
+                <widget class="QLineEdit" name="lineEdit_Pixel_size">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="text">
-                  <string>Y2 [um:</string>
+                  <string>10</string>
                  </property>
                 </widget>
                </item>
-               <item row="1" column="2">
-                <widget class="QLineEdit" name="lineEdit_x2_scan">
+               <item row="1" column="1">
+                <widget class="QLineEdit" name="lineEdit_x2_scan_2">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -1659,19 +1722,53 @@
                   </sizepolicy>
                  </property>
                  <property name="text">
-                  <string>20000</string>
+                  <string>13850</string>
                  </property>
                 </widget>
                </item>
-               <item row="4" column="3">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_33">
+                 <property name="text">
+                  <string>X1 [um]:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <widget class="QLineEdit" name="lineEdit_y2_scan_2">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>37770</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="QLabel" name="label_36">
+                 <property name="text">
+                  <string>Y2 [um]:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_38">
+                 <property name="text">
+                  <string>Size Pixels [um]:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
                 <widget class="QLabel" name="label_41">
                  <property name="text">
                   <string>Speed [um/s]: </string>
                  </property>
                 </widget>
                </item>
-               <item row="0" column="4">
-                <widget class="QLineEdit" name="lineEdit_y1_scan">
+               <item row="0" column="1">
+                <widget class="QLineEdit" name="lineEdit_x1_scan_2">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -1679,31 +1776,52 @@
                   </sizepolicy>
                  </property>
                  <property name="text">
-                  <string>20000</string>
+                  <string>13350</string>
                  </property>
                 </widget>
                </item>
-               <item row="2" column="2">
-                <widget class="QLineEdit" name="lineEdit_stepx_scan">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
+              </layout>
+             </item>
+             <item>
+              <layout class="QGridLayout" name="gridLayout_4">
+               <property name="leftMargin">
+                <number>10</number>
+               </property>
+               <property name="topMargin">
+                <number>10</number>
+               </property>
+               <property name="rightMargin">
+                <number>10</number>
+               </property>
+               <item row="1" column="1">
+                <widget class="QPushButton" name="Stop_Y_but">
                  <property name="text">
-                  <string>10</string>
+                  <string>Stop Y</string>
                  </property>
                 </widget>
                </item>
-               <item row="4" column="0">
-                <widget class="QLabel" name="label_40">
+               <item row="1" column="0">
+                <widget class="QPushButton" name="Stop_x_but">
                  <property name="text">
-                  <string># Samples AVG:</string>
+                  <string>Stop X</string>
                  </property>
                 </widget>
                </item>
-               <item row="5" column="2">
+               <item row="0" column="1">
+                <widget class="QPushButton" name="continuous_scanY_but">
+                 <property name="text">
+                  <string>Continuous Scan Y</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QPushButton" name="continuous_scanX_but">
+                 <property name="text">
+                  <string>Continuos Scan X</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
                 <widget class="QPushButton" name="Step_Step_but">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -1716,83 +1834,27 @@
                  </property>
                 </widget>
                </item>
-               <item row="7" column="2">
-                <widget class="QPushButton" name="continuous_scanY_but">
-                 <property name="text">
-                  <string>Continuous Scan Y</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0">
-                <widget class="QLabel" name="label_33">
-                 <property name="text">
-                  <string>X1 [um]:</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="4">
-                <widget class="QLineEdit" name="lineEdit_stepy_scan">
+               <item row="2" column="1">
+                <widget class="QPushButton" name="Calib_Reset_Scan_but">
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
                  <property name="text">
-                  <string>100</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="4">
-                <widget class="QPushButton" name="Stop_x_but">
-                 <property name="text">
-                  <string>Stop X</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="3">
-                <widget class="QLabel" name="label_35">
-                 <property name="text">
-                  <string>Y1 [um:</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="2">
-                <widget class="QPushButton" name="continuous_scanX_but">
-                 <property name="text">
-                  <string>Continuos Scan X</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QLabel" name="label_38">
-                 <property name="text">
-                  <string>Step X [um]:</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="3">
-                <widget class="QLabel" name="label_39">
-                 <property name="text">
-                  <string>Step Y [um]:</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="7" column="4">
-                <widget class="QPushButton" name="Stop_Y_but">
-                 <property name="text">
-                  <string>Stop Y</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="4">
-                <widget class="QLineEdit" name="lineEdit_speed_ums">
-                 <property name="text">
-                  <string>500</string>
+                  <string>Reset Grid</string>
                  </property>
                 </widget>
                </item>
               </layout>
+             </item>
+             <item>
+              <widget class="QPushButton" name="Vel_Report">
+               <property name="text">
+                <string>Velocity Profile Report</string>
+               </property>
+              </widget>
              </item>
              <item>
               <spacer name="verticalSpacer_9">

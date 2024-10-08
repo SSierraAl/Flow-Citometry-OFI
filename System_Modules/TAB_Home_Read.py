@@ -97,10 +97,15 @@ def InsertHomeGraphs(self):
     def data_adquisition_home():
 
         ######### Update Laser data FFT and Voltage
-        self.DAQ_Data=self.threadDAQ.DAQ_Data
-        self.data_DAQ2=butter_bandpass_filter(self.DAQ_Data, self.low_freq_filter, self.high_freq_filter,self.order_filter, self.Laser_Frequency)
-        self.dataAmp, self.dataFreq, _=FFT_calc(self.data_DAQ2, self.Laser_Frequency)
+        self.DAQ_Data = self.threadDAQ.DAQ_Data
 
+        # Apply bandpass filter
+        self.data_DAQ2 = butter_bandpass_filter(self.DAQ_Data, self.low_freq_filter, self.high_freq_filter, self.order_filter, self.Laser_Frequency)
+
+        # Calculate FFT for the filtered signal
+        self.dataAmp, self.dataFreq, _ = FFT_calc(self.data_DAQ2, self.Laser_Frequency)
+
+        # Check if CounterAvg has not reached the limit
         if self.CounterAvg<self.VectorsAvg:
             self.Freq_Data[self.CounterAvg]=self.dataAmp
             self.CounterAvg=self.CounterAvg+1
@@ -109,13 +114,17 @@ def InsertHomeGraphs(self):
 
             #Max Peak detected
             self.ui.load_pages.Max_Peak_val.setText(str(round(max(self.dataAmp_Avg),2)))
+            
             self.PSD_Avg_Moment=(self.dataAmp_Avg*self.dataAmp_Avg)*(2/(self.number_of_samples*self.Laser_Frequency))
             M0 = np.sum(self.PSD_Avg_Moment)
-            if M0==0:
-                M0=1
+
+            # Small epsilon value to avoid division by near-zero values
+            epsilon = 1e-10
+            # Solve division by near-zero.
+            if np.abs(M0) < epsilon:
+                M0 = epsilon  # Set M0 to epsilon instead of 1 to avoid large deviations
             M1 = np.sum(self.dataFreq * self.PSD_Avg_Moment)
             self.ui.load_pages.Moment_val.setText(str(round((M1/M0),2)))
-
 
             
         self.dataAmp_Avg=(self.Freq_Data.mean(axis=1))
