@@ -1,7 +1,5 @@
 from Libraries import *
 
-
-
 class Phantom_Cam():
     'Class to manage the connection with the camera and its parameters'
     def __init__(self):
