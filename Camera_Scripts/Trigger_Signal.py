@@ -1,6 +1,17 @@
-#Code to test the external trigger function of the Phantom Camera using the DAQ NI USB-6361 d 
+""""
 
-from Libraries import *
+Code to test the external trigger function of the Phantom Camera
+using the DAQ NI USB-6361
+
+"""
+
+###### Libraries Import #######
+
+import nidaqmx
+import keyboard
+import numpy as np
+
+#########################################################################
 
 # Define the DAQ device and channel
 device_name = 'Dev1'  # Replace with your DAQ device name
@@ -47,3 +58,5 @@ with nidaqmx.Task() as task:
 
     except KeyboardInterrupt:
         print("Program terminated.")
+
+#########################################################################
