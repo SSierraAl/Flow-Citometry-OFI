@@ -1,9 +1,9 @@
 
 import numpy as np
-from scipy.signal import butter, filtfilt,spectrogram
+from scipy.signal import butter, filtfilt,spectrogram, hilbert
 import pandas as pd
 from scipy.optimize import curve_fit
-
+import os
 
 # Fast Fourier Transform (FFT) calculation
 ################################################################################
@@ -436,9 +436,9 @@ def GetLoad_Folder(directory,name_especific, new_data):
             data.append(file_data)
         # Convert the list of data into a Numpy array
         data = np.array(data,dtype=object)
-        np.save(('./Particle_Segmentation/Temporal_Files/'+name_especific+'.npy'), data)
+        np.save(('./Temporal_Files/'+name_especific+'.npy'), data)
     else:
-        data = np.load('./Particle_Segmentation/Temporal_Files/'+name_especific+'.npy')
+        data = np.load('./Temporal_Files/'+name_especific+'.npy')
     return data
 
 
