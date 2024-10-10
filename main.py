@@ -27,8 +27,9 @@ from System_Modules.TAB_Home_Read import *
 
 #from SignalAdquisition import *
 from System_Modules.DAQ_Reader_Global import *
-#from TAB_Scanning import *
+from System_Modules.TAB_Scanning import *
 from System_Modules.TAB_Bokeh_Server import *
+from System_Modules.TAB_ZaberFunctions import *
 
 import sys
 from queue import Queue
@@ -63,7 +64,7 @@ class MainWindow(QMainWindow):
 
         # ZABER TAB
         # ///////////////////////////////////////////////////////////////
-        #InitializeZaber(self)
+        InitializeZaber(self)
 
         # SET DAQ ACQUISIITON
         # ///////////////////////////////////////////////////////////////
@@ -75,7 +76,8 @@ class MainWindow(QMainWindow):
 
         # SET SCANNING TAB
         # ///////////////////////////////////////////////////////////////
-        #Set_Scanning_Tab(self)
+        self.scan_functions_instance = Scan_functions(self)
+        Set_Scanning_Tab(self, self.scan_functions_instance) 
 
         # SET SERVER TAB
         # ///////////////////////////////////////////////////////////////
