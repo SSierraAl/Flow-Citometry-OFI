@@ -1,6 +1,10 @@
 import time
+
+
 """ Module responsible for determining the center reference position and image processing
 """
+
+
 def edge_scan(main_window, direction, start_coordinates):
     """performs a scan in a direction and returns the Zaber (X,Y) coordinates
     of first encountered edge.

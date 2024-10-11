@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_pageswQkkHc.ui'
+## Form generated from reading UI file 'main_pagesXKDcBp.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.4.2
 ##
@@ -25,17 +25,19 @@ class Ui_MainPages(object):
         if not MainPages.objectName():
             MainPages.setObjectName(u"MainPages")
         MainPages.resize(1145, 820)
-        self.verticalLayout = QVBoxLayout(MainPages)
-        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout_13 = QVBoxLayout(MainPages)
+        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.pages = QStackedWidget(MainPages)
         self.pages.setObjectName(u"pages")
+        font = QFont()
+        font.setPointSize(12)
+        self.pages.setFont(font)
         self.page_1 = QWidget()
         self.page_1.setObjectName(u"page_1")
-        self.page_1.setStyleSheet(u"font-size: 14pt")
-        self.page_1_layout = QVBoxLayout(self.page_1)
-        self.page_1_layout.setSpacing(5)
-        self.page_1_layout.setObjectName(u"page_1_layout")
-        self.page_1_layout.setContentsMargins(5, 5, 5, 5)
+        self.page_1.setFont(font)
+        self.page_1.setStyleSheet(u"font-size: 12pt")
+        self.verticalLayout = QVBoxLayout(self.page_1)
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout_6 = QVBoxLayout()
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.label_27 = QLabel(self.page_1)
@@ -117,6 +119,10 @@ class Ui_MainPages(object):
         self.lineEdit_Laser.setObjectName(u"lineEdit_Laser")
         sizePolicy1.setHeightForWidth(self.lineEdit_Laser.sizePolicy().hasHeightForWidth())
         self.lineEdit_Laser.setSizePolicy(sizePolicy1)
+        font1 = QFont()
+        font1.setFamilies([u"Segoe UI"])
+        font1.setPointSize(12)
+        self.lineEdit_Laser.setFont(font1)
 
         self.gridLayout.addWidget(self.lineEdit_Laser, 0, 2, 1, 1)
 
@@ -365,6 +371,7 @@ class Ui_MainPages(object):
         self.Start_Zaber_Calib_but.setObjectName(u"Start_Zaber_Calib_but")
         sizePolicy.setHeightForWidth(self.Start_Zaber_Calib_but.sizePolicy().hasHeightForWidth())
         self.Start_Zaber_Calib_but.setSizePolicy(sizePolicy)
+        self.Start_Zaber_Calib_but.setFont(font)
 
         self.verticalLayout_7.addWidget(self.Start_Zaber_Calib_but)
 
@@ -389,7 +396,7 @@ class Ui_MainPages(object):
         self.verticalLayout_6.addLayout(self.horizontalLayout_14)
 
 
-        self.page_1_layout.addLayout(self.verticalLayout_6)
+        self.verticalLayout.addLayout(self.verticalLayout_6)
 
         self.pages.addWidget(self.page_1)
         self.page_2 = QWidget()
@@ -400,6 +407,19 @@ class Ui_MainPages(object):
         self.page_2_layout.setContentsMargins(5, 5, 5, 5)
         self.Server_Layout = QVBoxLayout()
         self.Server_Layout.setObjectName(u"Server_Layout")
+        self.label_50 = QLabel(self.page_2)
+        self.label_50.setObjectName(u"label_50")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.label_50.sizePolicy().hasHeightForWidth())
+        self.label_50.setSizePolicy(sizePolicy3)
+        self.label_50.setFocusPolicy(Qt.NoFocus)
+        self.label_50.setLayoutDirection(Qt.LeftToRight)
+        self.label_50.setAlignment(Qt.AlignCenter)
+
+        self.Server_Layout.addWidget(self.label_50)
+
         self.Update_but_Server = QPushButton(self.page_2)
         self.Update_but_Server.setObjectName(u"Update_but_Server")
 
@@ -411,9 +431,8 @@ class Ui_MainPages(object):
         self.pages.addWidget(self.page_2)
         self.page_3 = QWidget()
         self.page_3.setObjectName(u"page_3")
-        self.page_3.setStyleSheet(u"QFrame {\n"
-"	font-size: 16pt;\n"
-"}")
+        self.page_3.setStyleSheet(u"font-size: 12pt;\n"
+"")
         self.page_3_layout = QVBoxLayout(self.page_3)
         self.page_3_layout.setObjectName(u"page_3_layout")
         self.verticalLayout_2 = QVBoxLayout()
@@ -432,8 +451,6 @@ class Ui_MainPages(object):
 
         self.n_devices_p3 = QLabel(self.page_3)
         self.n_devices_p3.setObjectName(u"n_devices_p3")
-        font = QFont()
-        font.setPointSize(16)
         self.n_devices_p3.setFont(font)
 
         self.horizontalLayout.addWidget(self.n_devices_p3)
@@ -456,32 +473,32 @@ class Ui_MainPages(object):
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.globalhome_p3 = QPushButton(self.page_3)
         self.globalhome_p3.setObjectName(u"globalhome_p3")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.globalhome_p3.sizePolicy().hasHeightForWidth())
-        self.globalhome_p3.setSizePolicy(sizePolicy3)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.globalhome_p3.sizePolicy().hasHeightForWidth())
+        self.globalhome_p3.setSizePolicy(sizePolicy4)
 
         self.horizontalLayout_2.addWidget(self.globalhome_p3)
 
         self.home1_p3 = QPushButton(self.page_3)
         self.home1_p3.setObjectName(u"home1_p3")
-        sizePolicy3.setHeightForWidth(self.home1_p3.sizePolicy().hasHeightForWidth())
-        self.home1_p3.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.home1_p3.sizePolicy().hasHeightForWidth())
+        self.home1_p3.setSizePolicy(sizePolicy4)
 
         self.horizontalLayout_2.addWidget(self.home1_p3)
 
         self.home2_p3 = QPushButton(self.page_3)
         self.home2_p3.setObjectName(u"home2_p3")
-        sizePolicy3.setHeightForWidth(self.home2_p3.sizePolicy().hasHeightForWidth())
-        self.home2_p3.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.home2_p3.sizePolicy().hasHeightForWidth())
+        self.home2_p3.setSizePolicy(sizePolicy4)
 
         self.horizontalLayout_2.addWidget(self.home2_p3)
 
         self.home3_p3 = QPushButton(self.page_3)
         self.home3_p3.setObjectName(u"home3_p3")
-        sizePolicy3.setHeightForWidth(self.home3_p3.sizePolicy().hasHeightForWidth())
-        self.home3_p3.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.home3_p3.sizePolicy().hasHeightForWidth())
+        self.home3_p3.setSizePolicy(sizePolicy4)
 
         self.horizontalLayout_2.addWidget(self.home3_p3)
 
@@ -586,11 +603,11 @@ class Ui_MainPages(object):
         self.horizontalLayout_13.setContentsMargins(-1, 0, -1, -1)
         self.z1speed = QLineEdit(self.page_3)
         self.z1speed.setObjectName(u"z1speed")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Minimum)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.z1speed.sizePolicy().hasHeightForWidth())
-        self.z1speed.setSizePolicy(sizePolicy4)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Minimum)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.z1speed.sizePolicy().hasHeightForWidth())
+        self.z1speed.setSizePolicy(sizePolicy5)
         self.z1speed.setMaxLength(200)
 
         self.horizontalLayout_13.addWidget(self.z1speed)
@@ -928,6 +945,7 @@ class Ui_MainPages(object):
         self.pages.addWidget(self.page_3)
         self.page_calib = QWidget()
         self.page_calib.setObjectName(u"page_calib")
+        self.page_calib.setStyleSheet(u"font: 12pt \"Segoe UI\";")
         self.verticalLayout_11 = QVBoxLayout(self.page_calib)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.verticalLayout_10 = QVBoxLayout()
@@ -946,8 +964,9 @@ class Ui_MainPages(object):
         self.horizontalLayout_17.setSizeConstraint(QLayout.SetFixedSize)
         self.horizontalLayout_17.setContentsMargins(10, 10, 10, 10)
         self.verticalLayout_8 = QVBoxLayout()
+        self.verticalLayout_8.setSpacing(0)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.verticalLayout_8.setSizeConstraint(QLayout.SetFixedSize)
+        self.verticalLayout_8.setSizeConstraint(QLayout.SetMinimumSize)
         self.verticalSpacer_10 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_8.addItem(self.verticalSpacer_10)
@@ -961,6 +980,11 @@ class Ui_MainPages(object):
 
         self.label_45 = QLabel(self.page_calib)
         self.label_45.setObjectName(u"label_45")
+        sizePolicy6 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Minimum)
+        sizePolicy6.setHorizontalStretch(0)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.label_45.sizePolicy().hasHeightForWidth())
+        self.label_45.setSizePolicy(sizePolicy6)
         self.label_45.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_8.addWidget(self.label_45)
@@ -974,6 +998,8 @@ class Ui_MainPages(object):
 
         self.Vel_Start_Calib = QPushButton(self.page_calib)
         self.Vel_Start_Calib.setObjectName(u"Vel_Start_Calib")
+        sizePolicy3.setHeightForWidth(self.Vel_Start_Calib.sizePolicy().hasHeightForWidth())
+        self.Vel_Start_Calib.setSizePolicy(sizePolicy3)
 
         self.verticalLayout_8.addWidget(self.Vel_Start_Calib)
 
@@ -982,84 +1008,85 @@ class Ui_MainPages(object):
         self.gridLayout_5.setSizeConstraint(QLayout.SetFixedSize)
         self.Vel_Steps_Calib = QLineEdit(self.page_calib)
         self.Vel_Steps_Calib.setObjectName(u"Vel_Steps_Calib")
-        sizePolicy1.setHeightForWidth(self.Vel_Steps_Calib.sizePolicy().hasHeightForWidth())
-        self.Vel_Steps_Calib.setSizePolicy(sizePolicy1)
+        sizePolicy3.setHeightForWidth(self.Vel_Steps_Calib.sizePolicy().hasHeightForWidth())
+        self.Vel_Steps_Calib.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.Vel_Steps_Calib, 2, 1, 1, 1)
 
         self.Vel_Limit_X1 = QLabel(self.page_calib)
         self.Vel_Limit_X1.setObjectName(u"Vel_Limit_X1")
+        sizePolicy4.setHeightForWidth(self.Vel_Limit_X1.sizePolicy().hasHeightForWidth())
+        self.Vel_Limit_X1.setSizePolicy(sizePolicy4)
 
         self.gridLayout_5.addWidget(self.Vel_Limit_X1, 3, 1, 1, 1)
 
         self.label_31 = QLabel(self.page_calib)
         self.label_31.setObjectName(u"label_31")
-        sizePolicy3.setHeightForWidth(self.label_31.sizePolicy().hasHeightForWidth())
-        self.label_31.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_31.sizePolicy().hasHeightForWidth())
+        self.label_31.setSizePolicy(sizePolicy4)
 
         self.gridLayout_5.addWidget(self.label_31, 2, 0, 1, 1)
 
         self.Vel_Manual_X1 = QLineEdit(self.page_calib)
         self.Vel_Manual_X1.setObjectName(u"Vel_Manual_X1")
-        sizePolicy1.setHeightForWidth(self.Vel_Manual_X1.sizePolicy().hasHeightForWidth())
-        self.Vel_Manual_X1.setSizePolicy(sizePolicy1)
+        sizePolicy3.setHeightForWidth(self.Vel_Manual_X1.sizePolicy().hasHeightForWidth())
+        self.Vel_Manual_X1.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.Vel_Manual_X1, 1, 1, 1, 1)
 
         self.label_30 = QLabel(self.page_calib)
         self.label_30.setObjectName(u"label_30")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.label_30.sizePolicy().hasHeightForWidth())
-        self.label_30.setSizePolicy(sizePolicy5)
+        sizePolicy3.setHeightForWidth(self.label_30.sizePolicy().hasHeightForWidth())
+        self.label_30.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.label_30, 1, 0, 1, 1)
 
         self.label_47 = QLabel(self.page_calib)
         self.label_47.setObjectName(u"label_47")
-        sizePolicy5.setHeightForWidth(self.label_47.sizePolicy().hasHeightForWidth())
-        self.label_47.setSizePolicy(sizePolicy5)
+        sizePolicy3.setHeightForWidth(self.label_47.sizePolicy().hasHeightForWidth())
+        self.label_47.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.label_47, 2, 2, 1, 1)
 
         self.label_48 = QLabel(self.page_calib)
         self.label_48.setObjectName(u"label_48")
-        sizePolicy5.setHeightForWidth(self.label_48.sizePolicy().hasHeightForWidth())
-        self.label_48.setSizePolicy(sizePolicy5)
+        sizePolicy3.setHeightForWidth(self.label_48.sizePolicy().hasHeightForWidth())
+        self.label_48.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.label_48, 3, 2, 1, 1)
 
         self.label_46 = QLabel(self.page_calib)
         self.label_46.setObjectName(u"label_46")
-        sizePolicy5.setHeightForWidth(self.label_46.sizePolicy().hasHeightForWidth())
-        self.label_46.setSizePolicy(sizePolicy5)
+        sizePolicy3.setHeightForWidth(self.label_46.sizePolicy().hasHeightForWidth())
+        self.label_46.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.label_46, 1, 2, 1, 1)
 
         self.label_32 = QLabel(self.page_calib)
         self.label_32.setObjectName(u"label_32")
-        sizePolicy3.setHeightForWidth(self.label_32.sizePolicy().hasHeightForWidth())
-        self.label_32.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_32.sizePolicy().hasHeightForWidth())
+        self.label_32.setSizePolicy(sizePolicy4)
 
         self.gridLayout_5.addWidget(self.label_32, 3, 0, 1, 1)
 
         self.Vel_Manual_X2 = QLineEdit(self.page_calib)
         self.Vel_Manual_X2.setObjectName(u"Vel_Manual_X2")
-        sizePolicy1.setHeightForWidth(self.Vel_Manual_X2.sizePolicy().hasHeightForWidth())
-        self.Vel_Manual_X2.setSizePolicy(sizePolicy1)
+        sizePolicy3.setHeightForWidth(self.Vel_Manual_X2.sizePolicy().hasHeightForWidth())
+        self.Vel_Manual_X2.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.Vel_Manual_X2, 1, 3, 1, 1)
 
         self.Vel_Threshold_Peak = QLineEdit(self.page_calib)
         self.Vel_Threshold_Peak.setObjectName(u"Vel_Threshold_Peak")
-        sizePolicy1.setHeightForWidth(self.Vel_Threshold_Peak.sizePolicy().hasHeightForWidth())
-        self.Vel_Threshold_Peak.setSizePolicy(sizePolicy1)
+        sizePolicy3.setHeightForWidth(self.Vel_Threshold_Peak.sizePolicy().hasHeightForWidth())
+        self.Vel_Threshold_Peak.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.Vel_Threshold_Peak, 2, 3, 1, 1)
 
         self.Vel_Limit_X2 = QLabel(self.page_calib)
         self.Vel_Limit_X2.setObjectName(u"Vel_Limit_X2")
+        sizePolicy4.setHeightForWidth(self.Vel_Limit_X2.sizePolicy().hasHeightForWidth())
+        self.Vel_Limit_X2.setSizePolicy(sizePolicy4)
 
         self.gridLayout_5.addWidget(self.Vel_Limit_X2, 3, 3, 1, 1)
 
@@ -1079,6 +1106,8 @@ class Ui_MainPages(object):
 
         self.label_49 = QLabel(self.page_calib)
         self.label_49.setObjectName(u"label_49")
+        sizePolicy6.setHeightForWidth(self.label_49.sizePolicy().hasHeightForWidth())
+        self.label_49.setSizePolicy(sizePolicy6)
         self.label_49.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_8.addWidget(self.label_49)
@@ -1107,29 +1136,29 @@ class Ui_MainPages(object):
 
         self.lineEdit_y1_scan = QLineEdit(self.page_calib)
         self.lineEdit_y1_scan.setObjectName(u"lineEdit_y1_scan")
-        sizePolicy1.setHeightForWidth(self.lineEdit_y1_scan.sizePolicy().hasHeightForWidth())
-        self.lineEdit_y1_scan.setSizePolicy(sizePolicy1)
+        sizePolicy3.setHeightForWidth(self.lineEdit_y1_scan.sizePolicy().hasHeightForWidth())
+        self.lineEdit_y1_scan.setSizePolicy(sizePolicy3)
 
         self.gridLayout_7.addWidget(self.lineEdit_y1_scan, 0, 3, 1, 1)
 
         self.lineEdit_speed_ums = QLineEdit(self.page_calib)
         self.lineEdit_speed_ums.setObjectName(u"lineEdit_speed_ums")
-        sizePolicy1.setHeightForWidth(self.lineEdit_speed_ums.sizePolicy().hasHeightForWidth())
-        self.lineEdit_speed_ums.setSizePolicy(sizePolicy1)
+        sizePolicy3.setHeightForWidth(self.lineEdit_speed_ums.sizePolicy().hasHeightForWidth())
+        self.lineEdit_speed_ums.setSizePolicy(sizePolicy3)
 
         self.gridLayout_7.addWidget(self.lineEdit_speed_ums, 2, 3, 1, 1)
 
         self.lineEdit_Pixel_size = QLineEdit(self.page_calib)
         self.lineEdit_Pixel_size.setObjectName(u"lineEdit_Pixel_size")
-        sizePolicy5.setHeightForWidth(self.lineEdit_Pixel_size.sizePolicy().hasHeightForWidth())
-        self.lineEdit_Pixel_size.setSizePolicy(sizePolicy5)
+        sizePolicy3.setHeightForWidth(self.lineEdit_Pixel_size.sizePolicy().hasHeightForWidth())
+        self.lineEdit_Pixel_size.setSizePolicy(sizePolicy3)
 
         self.gridLayout_7.addWidget(self.lineEdit_Pixel_size, 2, 1, 1, 1)
 
         self.lineEdit_x2_scan = QLineEdit(self.page_calib)
         self.lineEdit_x2_scan.setObjectName(u"lineEdit_x2_scan")
-        sizePolicy1.setHeightForWidth(self.lineEdit_x2_scan.sizePolicy().hasHeightForWidth())
-        self.lineEdit_x2_scan.setSizePolicy(sizePolicy1)
+        sizePolicy3.setHeightForWidth(self.lineEdit_x2_scan.sizePolicy().hasHeightForWidth())
+        self.lineEdit_x2_scan.setSizePolicy(sizePolicy3)
 
         self.gridLayout_7.addWidget(self.lineEdit_x2_scan, 1, 1, 1, 1)
 
@@ -1140,8 +1169,8 @@ class Ui_MainPages(object):
 
         self.lineEdit_y2_scan = QLineEdit(self.page_calib)
         self.lineEdit_y2_scan.setObjectName(u"lineEdit_y2_scan")
-        sizePolicy1.setHeightForWidth(self.lineEdit_y2_scan.sizePolicy().hasHeightForWidth())
-        self.lineEdit_y2_scan.setSizePolicy(sizePolicy1)
+        sizePolicy3.setHeightForWidth(self.lineEdit_y2_scan.sizePolicy().hasHeightForWidth())
+        self.lineEdit_y2_scan.setSizePolicy(sizePolicy3)
 
         self.gridLayout_7.addWidget(self.lineEdit_y2_scan, 1, 3, 1, 1)
 
@@ -1162,8 +1191,8 @@ class Ui_MainPages(object):
 
         self.lineEdit_x1_scan = QLineEdit(self.page_calib)
         self.lineEdit_x1_scan.setObjectName(u"lineEdit_x1_scan")
-        sizePolicy1.setHeightForWidth(self.lineEdit_x1_scan.sizePolicy().hasHeightForWidth())
-        self.lineEdit_x1_scan.setSizePolicy(sizePolicy1)
+        sizePolicy3.setHeightForWidth(self.lineEdit_x1_scan.sizePolicy().hasHeightForWidth())
+        self.lineEdit_x1_scan.setSizePolicy(sizePolicy3)
 
         self.gridLayout_7.addWidget(self.lineEdit_x1_scan, 0, 1, 1, 1)
 
@@ -1175,35 +1204,43 @@ class Ui_MainPages(object):
         self.gridLayout_4.setContentsMargins(10, 10, 10, -1)
         self.Stop_Y_but = QPushButton(self.page_calib)
         self.Stop_Y_but.setObjectName(u"Stop_Y_but")
+        sizePolicy3.setHeightForWidth(self.Stop_Y_but.sizePolicy().hasHeightForWidth())
+        self.Stop_Y_but.setSizePolicy(sizePolicy3)
 
         self.gridLayout_4.addWidget(self.Stop_Y_but, 1, 1, 1, 1)
 
         self.Stop_x_but = QPushButton(self.page_calib)
         self.Stop_x_but.setObjectName(u"Stop_x_but")
+        sizePolicy3.setHeightForWidth(self.Stop_x_but.sizePolicy().hasHeightForWidth())
+        self.Stop_x_but.setSizePolicy(sizePolicy3)
 
         self.gridLayout_4.addWidget(self.Stop_x_but, 1, 0, 1, 1)
 
         self.continuous_scanY_but = QPushButton(self.page_calib)
         self.continuous_scanY_but.setObjectName(u"continuous_scanY_but")
+        sizePolicy3.setHeightForWidth(self.continuous_scanY_but.sizePolicy().hasHeightForWidth())
+        self.continuous_scanY_but.setSizePolicy(sizePolicy3)
 
         self.gridLayout_4.addWidget(self.continuous_scanY_but, 0, 1, 1, 1)
 
         self.continuous_scanX_but = QPushButton(self.page_calib)
         self.continuous_scanX_but.setObjectName(u"continuous_scanX_but")
+        sizePolicy3.setHeightForWidth(self.continuous_scanX_but.sizePolicy().hasHeightForWidth())
+        self.continuous_scanX_but.setSizePolicy(sizePolicy3)
 
         self.gridLayout_4.addWidget(self.continuous_scanX_but, 0, 0, 1, 1)
 
         self.Step_Step_but = QPushButton(self.page_calib)
         self.Step_Step_but.setObjectName(u"Step_Step_but")
-        sizePolicy5.setHeightForWidth(self.Step_Step_but.sizePolicy().hasHeightForWidth())
-        self.Step_Step_but.setSizePolicy(sizePolicy5)
+        sizePolicy3.setHeightForWidth(self.Step_Step_but.sizePolicy().hasHeightForWidth())
+        self.Step_Step_but.setSizePolicy(sizePolicy3)
 
         self.gridLayout_4.addWidget(self.Step_Step_but, 2, 0, 1, 1)
 
         self.Calib_Reset_Scan_but = QPushButton(self.page_calib)
         self.Calib_Reset_Scan_but.setObjectName(u"Calib_Reset_Scan_but")
-        sizePolicy5.setHeightForWidth(self.Calib_Reset_Scan_but.sizePolicy().hasHeightForWidth())
-        self.Calib_Reset_Scan_but.setSizePolicy(sizePolicy5)
+        sizePolicy3.setHeightForWidth(self.Calib_Reset_Scan_but.sizePolicy().hasHeightForWidth())
+        self.Calib_Reset_Scan_but.setSizePolicy(sizePolicy3)
 
         self.gridLayout_4.addWidget(self.Calib_Reset_Scan_but, 2, 1, 1, 1)
 
@@ -1212,6 +1249,8 @@ class Ui_MainPages(object):
 
         self.Vel_Report = QPushButton(self.page_calib)
         self.Vel_Report.setObjectName(u"Vel_Report")
+        sizePolicy3.setHeightForWidth(self.Vel_Report.sizePolicy().hasHeightForWidth())
+        self.Vel_Report.setSizePolicy(sizePolicy3)
 
         self.verticalLayout_8.addWidget(self.Vel_Report)
 
@@ -1237,7 +1276,7 @@ class Ui_MainPages(object):
         self.Layout_table_Scan = QVBoxLayout()
         self.Layout_table_Scan.setSpacing(5)
         self.Layout_table_Scan.setObjectName(u"Layout_table_Scan")
-        self.Layout_table_Scan.setSizeConstraint(QLayout.SetMinimumSize)
+        self.Layout_table_Scan.setSizeConstraint(QLayout.SetMaximumSize)
         self.Layout_table_Scan.setContentsMargins(5, 5, 5, 5)
 
         self.verticalLayout_9.addLayout(self.Layout_table_Scan)
@@ -1260,13 +1299,214 @@ class Ui_MainPages(object):
         self.verticalLayout_11.addLayout(self.verticalLayout_10)
 
         self.pages.addWidget(self.page_calib)
+        self.page_cam = QWidget()
+        self.page_cam.setObjectName(u"page_cam")
+        self.page_cam.setStyleSheet(u"font: 12pt")
+        self.verticalLayout_12 = QVBoxLayout(self.page_cam)
+        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.verticalLayout_26 = QVBoxLayout()
+        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
+        self.label_98 = QLabel(self.page_cam)
+        self.label_98.setObjectName(u"label_98")
+        sizePolicy.setHeightForWidth(self.label_98.sizePolicy().hasHeightForWidth())
+        self.label_98.setSizePolicy(sizePolicy)
 
-        self.verticalLayout.addWidget(self.pages)
+        self.verticalLayout_26.addWidget(self.label_98)
+
+        self.horizontalLayout_43 = QHBoxLayout()
+        self.horizontalLayout_43.setObjectName(u"horizontalLayout_43")
+        self.verticalLayout_27 = QVBoxLayout()
+        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
+        self.verticalLayout_27.setContentsMargins(10, 10, 10, 10)
+        self.line_35 = QFrame(self.page_cam)
+        self.line_35.setObjectName(u"line_35")
+        self.line_35.setFrameShape(QFrame.HLine)
+        self.line_35.setFrameShadow(QFrame.Sunken)
+
+        self.verticalLayout_27.addWidget(self.line_35)
+
+        self.label_99 = QLabel(self.page_cam)
+        self.label_99.setObjectName(u"label_99")
+        sizePolicy3.setHeightForWidth(self.label_99.sizePolicy().hasHeightForWidth())
+        self.label_99.setSizePolicy(sizePolicy3)
+
+        self.verticalLayout_27.addWidget(self.label_99)
+
+        self.line_36 = QFrame(self.page_cam)
+        self.line_36.setObjectName(u"line_36")
+        self.line_36.setFrameShape(QFrame.HLine)
+        self.line_36.setFrameShadow(QFrame.Sunken)
+
+        self.verticalLayout_27.addWidget(self.line_36)
+
+        self.gridLayout_13 = QGridLayout()
+        self.gridLayout_13.setObjectName(u"gridLayout_13")
+        self.gridLayout_13.setContentsMargins(20, 20, 20, 10)
+        self.but_start_cam_2 = QPushButton(self.page_cam)
+        self.but_start_cam_2.setObjectName(u"but_start_cam_2")
+
+        self.gridLayout_13.addWidget(self.but_start_cam_2, 7, 0, 1, 1)
+
+        self.line_resolution_cam_h_2 = QLineEdit(self.page_cam)
+        self.line_resolution_cam_h_2.setObjectName(u"line_resolution_cam_h_2")
+        sizePolicy3.setHeightForWidth(self.line_resolution_cam_h_2.sizePolicy().hasHeightForWidth())
+        self.line_resolution_cam_h_2.setSizePolicy(sizePolicy3)
+
+        self.gridLayout_13.addWidget(self.line_resolution_cam_h_2, 1, 1, 1, 1)
+
+        self.but_stop_cam_2 = QPushButton(self.page_cam)
+        self.but_stop_cam_2.setObjectName(u"but_stop_cam_2")
+
+        self.gridLayout_13.addWidget(self.but_stop_cam_2, 8, 0, 1, 1)
+
+        self.label_100 = QLabel(self.page_cam)
+        self.label_100.setObjectName(u"label_100")
+
+        self.gridLayout_13.addWidget(self.label_100, 1, 0, 1, 1)
+
+        self.line_exposure_cam_2 = QLineEdit(self.page_cam)
+        self.line_exposure_cam_2.setObjectName(u"line_exposure_cam_2")
+        sizePolicy3.setHeightForWidth(self.line_exposure_cam_2.sizePolicy().hasHeightForWidth())
+        self.line_exposure_cam_2.setSizePolicy(sizePolicy3)
+
+        self.gridLayout_13.addWidget(self.line_exposure_cam_2, 3, 1, 1, 1)
+
+        self.line_trigger_frame_cam_2 = QLineEdit(self.page_cam)
+        self.line_trigger_frame_cam_2.setObjectName(u"line_trigger_frame_cam_2")
+        sizePolicy3.setHeightForWidth(self.line_trigger_frame_cam_2.sizePolicy().hasHeightForWidth())
+        self.line_trigger_frame_cam_2.setSizePolicy(sizePolicy3)
+
+        self.gridLayout_13.addWidget(self.line_trigger_frame_cam_2, 4, 1, 1, 1)
+
+        self.line_frame_rate_cam_2 = QLineEdit(self.page_cam)
+        self.line_frame_rate_cam_2.setObjectName(u"line_frame_rate_cam_2")
+        sizePolicy3.setHeightForWidth(self.line_frame_rate_cam_2.sizePolicy().hasHeightForWidth())
+        self.line_frame_rate_cam_2.setSizePolicy(sizePolicy3)
+
+        self.gridLayout_13.addWidget(self.line_frame_rate_cam_2, 2, 1, 1, 1)
+
+        self.label_101 = QLabel(self.page_cam)
+        self.label_101.setObjectName(u"label_101")
+
+        self.gridLayout_13.addWidget(self.label_101, 0, 0, 1, 1)
+
+        self.label_102 = QLabel(self.page_cam)
+        self.label_102.setObjectName(u"label_102")
+
+        self.gridLayout_13.addWidget(self.label_102, 2, 0, 1, 1)
+
+        self.label_103 = QLabel(self.page_cam)
+        self.label_103.setObjectName(u"label_103")
+
+        self.gridLayout_13.addWidget(self.label_103, 4, 0, 1, 1)
+
+        self.line_resolution_cam_w_2 = QLineEdit(self.page_cam)
+        self.line_resolution_cam_w_2.setObjectName(u"line_resolution_cam_w_2")
+        sizePolicy3.setHeightForWidth(self.line_resolution_cam_w_2.sizePolicy().hasHeightForWidth())
+        self.line_resolution_cam_w_2.setSizePolicy(sizePolicy3)
+
+        self.gridLayout_13.addWidget(self.line_resolution_cam_w_2, 0, 1, 1, 1)
+
+        self.label_104 = QLabel(self.page_cam)
+        self.label_104.setObjectName(u"label_104")
+
+        self.gridLayout_13.addWidget(self.label_104, 3, 0, 1, 1)
+
+        self.label_105 = QLabel(self.page_cam)
+        self.label_105.setObjectName(u"label_105")
+
+        self.gridLayout_13.addWidget(self.label_105, 5, 0, 1, 1)
+
+        self.line_directory_cam_2 = QLineEdit(self.page_cam)
+        self.line_directory_cam_2.setObjectName(u"line_directory_cam_2")
+        sizePolicy3.setHeightForWidth(self.line_directory_cam_2.sizePolicy().hasHeightForWidth())
+        self.line_directory_cam_2.setSizePolicy(sizePolicy3)
+
+        self.gridLayout_13.addWidget(self.line_directory_cam_2, 5, 1, 1, 1)
+
+        self.label_106 = QLabel(self.page_cam)
+        self.label_106.setObjectName(u"label_106")
+
+        self.gridLayout_13.addWidget(self.label_106, 6, 0, 1, 1)
+
+        self.line_partition_count_cam_2 = QLineEdit(self.page_cam)
+        self.line_partition_count_cam_2.setObjectName(u"line_partition_count_cam_2")
+        sizePolicy3.setHeightForWidth(self.line_partition_count_cam_2.sizePolicy().hasHeightForWidth())
+        self.line_partition_count_cam_2.setSizePolicy(sizePolicy3)
+
+        self.gridLayout_13.addWidget(self.line_partition_count_cam_2, 6, 1, 1, 1)
+
+        self.but_record_cam = QPushButton(self.page_cam)
+        self.but_record_cam.setObjectName(u"but_record_cam")
+
+        self.gridLayout_13.addWidget(self.but_record_cam, 7, 1, 1, 1)
+
+        self.but_trigger_cam = QPushButton(self.page_cam)
+        self.but_trigger_cam.setObjectName(u"but_trigger_cam")
+
+        self.gridLayout_13.addWidget(self.but_trigger_cam, 8, 1, 1, 1)
+
+
+        self.verticalLayout_27.addLayout(self.gridLayout_13)
+
+        self.verticalSpacer_20 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_27.addItem(self.verticalSpacer_20)
+
+
+        self.horizontalLayout_43.addLayout(self.verticalLayout_27)
+
+        self.verticalLayout_28 = QVBoxLayout()
+        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
+        self.horizontalSpacer_21 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.verticalLayout_28.addItem(self.horizontalSpacer_21)
+
+        self.Layout_Cam = QHBoxLayout()
+        self.Layout_Cam.setObjectName(u"Layout_Cam")
+        self.horizontalSpacer_22 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.Layout_Cam.addItem(self.horizontalSpacer_22)
+
+        self.verticalLayout_29 = QVBoxLayout()
+        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
+        self.verticalLayout_29.setContentsMargins(10, 10, 10, 10)
+        self.image_label = QLabel(self.page_cam)
+        self.image_label.setObjectName(u"image_label")
+
+        self.verticalLayout_29.addWidget(self.image_label)
+
+
+        self.Layout_Cam.addLayout(self.verticalLayout_29)
+
+        self.horizontalSpacer_23 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.Layout_Cam.addItem(self.horizontalSpacer_23)
+
+
+        self.verticalLayout_28.addLayout(self.Layout_Cam)
+
+        self.horizontalSpacer_24 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.verticalLayout_28.addItem(self.horizontalSpacer_24)
+
+
+        self.horizontalLayout_43.addLayout(self.verticalLayout_28)
+
+
+        self.verticalLayout_26.addLayout(self.horizontalLayout_43)
+
+
+        self.verticalLayout_12.addLayout(self.verticalLayout_26)
+
+        self.pages.addWidget(self.page_cam)
+
+        self.verticalLayout_13.addWidget(self.pages)
 
 
         self.retranslateUi(MainPages)
 
-        self.pages.setCurrentIndex(2)
+        self.pages.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainPages)
@@ -1275,96 +1515,97 @@ class Ui_MainPages(object):
     def retranslateUi(self, MainPages):
         MainPages.setWindowTitle(QCoreApplication.translate("MainPages", u"Form", None))
         self.label_27.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:700;\">Signal Acquisition</span></p></body></html>", None))
-        self.label_14.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:700;\">Parameters</span></p></body></html>", None))
-        self.label_15.setText(QCoreApplication.translate("MainPages", u"Acquisition Frequency [Hz]:", None))
+        self.label_14.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">Parameters</span></p></body></html>", None))
+        self.label_15.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:12pt;\">Acquisition Frequency [Hz]:</span></p></body></html>", None))
         self.lineEdit_Low_Freq.setText(QCoreApplication.translate("MainPages", u"7000", None))
-        self.label_18.setText(QCoreApplication.translate("MainPages", u"Bandpass Filter H [Hz]:", None))
-        self.label_16.setText(QCoreApplication.translate("MainPages", u"Number of Samples:", None))
+        self.label_18.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:12pt;\">Bandpass Filter H [Hz]:</span></p></body></html>", None))
+        self.label_16.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:12pt;\">Number of Samples:</span></p></body></html>", None))
         self.lineEdit_High_Freq.setText(QCoreApplication.translate("MainPages", u"100000", None))
-        self.label_17.setText(QCoreApplication.translate("MainPages", u"Bandpass Filter L [Hz]:", None))
+        self.label_17.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:12pt;\">Bandpass Filter L [Hz]:</span></p></body></html>", None))
         self.lineEdit_Laser.setText(QCoreApplication.translate("MainPages", u"2000000", None))
         self.lineEdit_number_samples.setText(QCoreApplication.translate("MainPages", u"16384", None))
-        self.label_19.setText(QCoreApplication.translate("MainPages", u"Average FFT", None))
+        self.label_19.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:12pt;\">Average FFT</span></p></body></html>", None))
         self.lineEdit_Avg_FFT.setText(QCoreApplication.translate("MainPages", u"100", None))
         self.DAQ_connect_but.setText(QCoreApplication.translate("MainPages", u"Start Acquisition", None))
         self.Stop_DAQ_but.setText(QCoreApplication.translate("MainPages", u"Stop Acquisition", None))
-        self.label_42.setText(QCoreApplication.translate("MainPages", u"Moment:", None))
+        self.label_42.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:12pt;\">Moment:</span></p></body></html>", None))
         self.Moment_val.setText(QCoreApplication.translate("MainPages", u"00.00", None))
-        self.label_43.setText(QCoreApplication.translate("MainPages", u"Max Amp Peak:", None))
+        self.label_43.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:12pt;\">Max Amp Peak:</span></p></body></html>", None))
         self.Max_Peak_val.setText(QCoreApplication.translate("MainPages", u"00.00", None))
-        self.label_22.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:700;\">Particle Search</span></p></body></html>", None))
+        self.label_22.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">Particle Search</span></p></body></html>", None))
         self.lineEdit_Directory.setText(QCoreApplication.translate("MainPages", u"./Particles_Data/test/", None))
-        self.label_20.setText(QCoreApplication.translate("MainPages", u"Directory:", None))
+        self.label_20.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:12pt;\">Directory:</span></p></body></html>", None))
         self.lineEdit_Name_Files.setText(QCoreApplication.translate("MainPages", u"HFocusing", None))
-        self.label_21.setText(QCoreApplication.translate("MainPages", u"Name Files:", None))
-        self.label_29.setText(QCoreApplication.translate("MainPages", u"Amp Peak:", None))
+        self.label_21.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:12pt;\">Name Files:</span></p></body></html>", None))
+        self.label_29.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:12pt;\">Amp Peak:</span></p></body></html>", None))
         self.lineEdit_amp_peak.setText(QCoreApplication.translate("MainPages", u"0.155", None))
         self.Search_Particles_but.setText(QCoreApplication.translate("MainPages", u"Start search", None))
         self.Stop_Search_P_but.setText(QCoreApplication.translate("MainPages", u"Stop Search", None))
-        self.label_23.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:700;\">Zaber Calibration</span></p></body></html>", None))
-        self.label_24.setText(QCoreApplication.translate("MainPages", u"Start Pos [mm]:", None))
+        self.label_23.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">Zaber Calibration</span></p></body></html>", None))
+        self.label_24.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:12pt;\">Start Pos [mm]:</span></p></body></html>", None))
         self.lineEdit_steps_zab.setText(QCoreApplication.translate("MainPages", u"15", None))
-        self.label_26.setText(QCoreApplication.translate("MainPages", u"Steps:", None))
-        self.label_25.setText(QCoreApplication.translate("MainPages", u"End Pos [mm]:", None))
+        self.label_26.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:12pt;\">Steps:</span></p></body></html>", None))
+        self.label_25.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:12pt;\">End Pos [mm]:</span></p></body></html>", None))
         self.lineEdit_start_zab_pos.setText(QCoreApplication.translate("MainPages", u"37500", None))
         self.lineEdit_end_zab_pos.setText(QCoreApplication.translate("MainPages", u"39500", None))
-        self.label_28.setText(QCoreApplication.translate("MainPages", u" Samples to check:", None))
+        self.label_28.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:12pt;\"> Samples to check:</span></p></body></html>", None))
         self.lineEdit_zab_samplesCheck.setText(QCoreApplication.translate("MainPages", u"100", None))
         self.Start_Zaber_Calib_but.setText(QCoreApplication.translate("MainPages", u"Start Calibration", None))
+        self.label_50.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:700;\">Data Analysis</span></p></body></html>", None))
         self.Update_but_Server.setText(QCoreApplication.translate("MainPages", u"PushButton", None))
-        self.label_p3.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:700;\">Zaber connection</span></p></body></html>", None))
+        self.label_p3.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:700;\">Zaber connection</span></p></body></html>", None))
         self.zabercon_p3.setText(QCoreApplication.translate("MainPages", u"Detect", None))
-        self.n_devices_p3.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700;\"># Devices</span></p></body></html>", None))
+        self.n_devices_p3.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p># Devices</p></body></html>", None))
         self.check_p3.setText("")
         self.globalhome_p3.setText(QCoreApplication.translate("MainPages", u"Reset Connection", None))
         self.home1_p3.setText(QCoreApplication.translate("MainPages", u"Home 1", None))
         self.home2_p3.setText(QCoreApplication.translate("MainPages", u"Home 2", None))
         self.home3_p3.setText(QCoreApplication.translate("MainPages", u"Home 3", None))
-        self.label.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\">Zaber 1</p></body></html>", None))
+        self.label.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">Zaber 1</span></p></body></html>", None))
         self.z1_Relative.setText(QCoreApplication.translate("MainPages", u"Relative", None))
         self.z1_Absolute.setText(QCoreApplication.translate("MainPages", u"Absolute", None))
         self.z1_cm.setText(QCoreApplication.translate("MainPages", u"cm", None))
         self.z1_mm.setText(QCoreApplication.translate("MainPages", u"mm", None))
         self.z1_um.setText(QCoreApplication.translate("MainPages", u"um", None))
-        self.label_4.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:9pt;\">Distance: </span></p></body></html>", None))
-        self.z1_set.setText(QCoreApplication.translate("MainPages", u"SET", None))
-        self.label_7.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">Move at constant speed</span></p></body></html>", None))
+        self.label_4.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p>Distance: </p></body></html>", None))
+        self.z1_set.setText(QCoreApplication.translate("MainPages", u"Set", None))
+        self.label_7.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\">Move at constant speed</p></body></html>", None))
         self.z1speed.setText(QCoreApplication.translate("MainPages", u"0.2", None))
-        self.label_10.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:10pt;\">mm/s</span></p></body></html>", None))
+        self.label_10.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p>mm/s</p></body></html>", None))
         self.z1_left.setText(QCoreApplication.translate("MainPages", u"<<", None))
         self.z1_right.setText(QCoreApplication.translate("MainPages", u">>", None))
         self.z1_Stop.setText(QCoreApplication.translate("MainPages", u"STOP", None))
-        self.label_2.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\">Zaber 2</p></body></html>", None))
+        self.label_2.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">Zaber 2</span></p></body></html>", None))
         self.z2_Relative.setText(QCoreApplication.translate("MainPages", u"Relative", None))
         self.z2_Absolute.setText(QCoreApplication.translate("MainPages", u"Absolute", None))
         self.z2_cm.setText(QCoreApplication.translate("MainPages", u"cm", None))
         self.z2_mm.setText(QCoreApplication.translate("MainPages", u"mm", None))
         self.z2_um.setText(QCoreApplication.translate("MainPages", u"um", None))
-        self.label_5.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:9pt;\">Distance</span></p></body></html>", None))
+        self.label_5.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p>Distance</p></body></html>", None))
         self.z2_Set.setText(QCoreApplication.translate("MainPages", u"Set", None))
-        self.label_8.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">Move at constant speed</span></p></body></html>", None))
+        self.label_8.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\">Move at constant speed</p></body></html>", None))
         self.z2speed.setText(QCoreApplication.translate("MainPages", u"0.2", None))
-        self.label_11.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:10pt;\">mm/s</span></p></body></html>", None))
+        self.label_11.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p>mm/s</p></body></html>", None))
         self.z2_left.setText(QCoreApplication.translate("MainPages", u"<<", None))
         self.z2_right.setText(QCoreApplication.translate("MainPages", u">>", None))
         self.z2_Stop.setText(QCoreApplication.translate("MainPages", u"STOP", None))
-        self.label_3.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\">Zaber 3</p></body></html>", None))
+        self.label_3.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">Zaber 3</span></p></body></html>", None))
         self.z3_Relative.setText(QCoreApplication.translate("MainPages", u"Relative", None))
         self.z3_Absolute.setText(QCoreApplication.translate("MainPages", u"Absolute", None))
         self.z3_cm.setText(QCoreApplication.translate("MainPages", u"cm", None))
         self.z3_mm.setText(QCoreApplication.translate("MainPages", u"mm", None))
         self.z3_um.setText(QCoreApplication.translate("MainPages", u"um", None))
-        self.label_6.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:9pt;\">Distance</span></p></body></html>", None))
+        self.label_6.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p>Distance</p></body></html>", None))
         self.z3_Set.setText(QCoreApplication.translate("MainPages", u"Set", None))
-        self.label_9.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">Move at constant speed</span></p></body></html>", None))
+        self.label_9.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\">Move at constant speed</p></body></html>", None))
         self.z3speed.setText(QCoreApplication.translate("MainPages", u"0.2", None))
-        self.label_12.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:10pt;\">mm/s</span></p></body></html>", None))
+        self.label_12.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p>mm/s</p></body></html>", None))
         self.z3_left.setText(QCoreApplication.translate("MainPages", u"<<", None))
         self.z3_right.setText(QCoreApplication.translate("MainPages", u">>", None))
         self.z3_Stop.setText(QCoreApplication.translate("MainPages", u"STOP", None))
         self.Keyboard_p3.setText(QCoreApplication.translate("MainPages", u"Keyboard", None))
         self.label_44.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:700;\">Flow Velocity Profile</span></p></body></html>", None))
-        self.label_45.setText(QCoreApplication.translate("MainPages", u"Calibration", None))
+        self.label_45.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">Calibration</span></p></body></html>", None))
         self.Vel_Start_Calib.setText(QCoreApplication.translate("MainPages", u"START", None))
         self.Vel_Steps_Calib.setText(QCoreApplication.translate("MainPages", u"10", None))
         self.Vel_Limit_X1.setText(QCoreApplication.translate("MainPages", u"10000", None))
@@ -1378,7 +1619,7 @@ class Ui_MainPages(object):
         self.Vel_Manual_X2.setText(QCoreApplication.translate("MainPages", u"7000", None))
         self.Vel_Threshold_Peak.setText(QCoreApplication.translate("MainPages", u"30", None))
         self.Vel_Limit_X2.setText(QCoreApplication.translate("MainPages", u"20000", None))
-        self.label_49.setText(QCoreApplication.translate("MainPages", u"Scanning", None))
+        self.label_49.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">Scanning</span></p></body></html>", None))
         self.label_35.setText(QCoreApplication.translate("MainPages", u"Y1 [um]:", None))
         self.label_34.setText(QCoreApplication.translate("MainPages", u"X2 [um]:", None))
         self.lineEdit_y1_scan.setText(QCoreApplication.translate("MainPages", u"37720", None))
@@ -1398,5 +1639,26 @@ class Ui_MainPages(object):
         self.Step_Step_but.setText(QCoreApplication.translate("MainPages", u"Stop DAQ", None))
         self.Calib_Reset_Scan_but.setText(QCoreApplication.translate("MainPages", u"Reset Grid", None))
         self.Vel_Report.setText(QCoreApplication.translate("MainPages", u"Velocity Profile Report", None))
+        self.label_98.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:700;\">Camera Settings</span></p></body></html>", None))
+        self.label_99.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">Parameters</span></p></body></html>", None))
+        self.but_start_cam_2.setText(QCoreApplication.translate("MainPages", u"Live Image", None))
+        self.line_resolution_cam_h_2.setText(QCoreApplication.translate("MainPages", u"128", None))
+        self.but_stop_cam_2.setText(QCoreApplication.translate("MainPages", u"Stop", None))
+        self.label_100.setText(QCoreApplication.translate("MainPages", u"Resolution H [px]", None))
+        self.line_exposure_cam_2.setText(QCoreApplication.translate("MainPages", u"70", None))
+        self.line_trigger_frame_cam_2.setText(QCoreApplication.translate("MainPages", u"50", None))
+        self.line_frame_rate_cam_2.setText(QCoreApplication.translate("MainPages", u"8000", None))
+        self.label_101.setText(QCoreApplication.translate("MainPages", u"Resolution W [px]:", None))
+        self.label_102.setText(QCoreApplication.translate("MainPages", u"Frame Rate [fps]:", None))
+        self.label_103.setText(QCoreApplication.translate("MainPages", u"Trigger Frames:", None))
+        self.line_resolution_cam_w_2.setText(QCoreApplication.translate("MainPages", u"640", None))
+        self.label_104.setText(QCoreApplication.translate("MainPages", u"Exposure Time [us]", None))
+        self.label_105.setText(QCoreApplication.translate("MainPages", u"Directory:", None))
+        self.line_directory_cam_2.setText(QCoreApplication.translate("MainPages", u"./Temporal_Files/Images/", None))
+        self.label_106.setText(QCoreApplication.translate("MainPages", u"Partition Count:", None))
+        self.line_partition_count_cam_2.setText(QCoreApplication.translate("MainPages", u"1", None))
+        self.but_record_cam.setText(QCoreApplication.translate("MainPages", u"Record/Abort", None))
+        self.but_trigger_cam.setText(QCoreApplication.translate("MainPages", u"Trigger", None))
+        self.image_label.setText("")
     # retranslateUi
 

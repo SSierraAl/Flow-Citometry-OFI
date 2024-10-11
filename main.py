@@ -30,6 +30,8 @@ from System_Modules.DAQ_Reader_Global import *
 from System_Modules.TAB_Scanning import *
 from System_Modules.TAB_Bokeh_Server import *
 from System_Modules.TAB_ZaberFunctions import *
+from System_Modules.TAB_Camera import *
+
 
 import sys
 from queue import Queue
@@ -60,8 +62,6 @@ class MainWindow(QMainWindow):
         self.hide_grips = True # Show/Hide resize grips
         SetupMainWindow.setup_gui(self)
 
-
-
         # ZABER TAB
         # ///////////////////////////////////////////////////////////////
         InitializeZaber(self)
@@ -83,7 +83,9 @@ class MainWindow(QMainWindow):
         # ///////////////////////////////////////////////////////////////
         self.Server_Instance = Server_Init_Bokeh(self, shared_queue)
 
-        #Server_Init_Bokeh.start_bokeh_server(self)
+        # SET CAMERA TAB
+        # ///////////////////////////////////////////////////////////////
+        self.Camera_Instance = FrameCapture(self)
 
         # ///////////////////////////////////////////////////////////////
         # SHOW MAIN WINDOW
@@ -91,7 +93,6 @@ class MainWindow(QMainWindow):
         self.show()
 
     
-
 
     # LEFT MENU BTN IS CLICKED
     # Run function when btn is clicked
@@ -127,6 +128,12 @@ class MainWindow(QMainWindow):
             self.ui.left_menu.select_only_one(btn.objectName())
             MainFunctions.set_page(self, self.ui.load_pages.page_2)
 
+        # CAMERA CONECTION
+        # ///////////////////////////////////////////////////////////////
+        if btn.objectName() == "btn_camera":
+            # Select Menu
+            self.ui.left_menu.select_only_one(btn.objectName())
+            MainFunctions.set_page(self, self.ui.load_pages.page_cam)
 
 
         # ZABER CONECTION
@@ -146,7 +153,7 @@ class MainWindow(QMainWindow):
         # GET BT CLICKED
         btn = SetupMainWindow.setup_btns(self)
         # DEBUG
-        print(f"Button {btn.objectName()}, released!")
+        #print(f"Button {btn.objectName()}, released!")
 
     # RESIZE EVENT
     # ///////////////////////////////////////////////////////////////
@@ -167,6 +174,7 @@ class MainWindow(QMainWindow):
     #Override function to stop the thread at the same time that the app is closed
     def closeEvent(self, event):
         Server_Init_Bokeh.stop_thread(self.Server_Instance)
+        FrameCapture.close_capture_cam(self.Camera_Instance)
         event.accept()
 
 

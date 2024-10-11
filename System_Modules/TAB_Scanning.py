@@ -2,23 +2,24 @@
 the data processing of the laser measurements, including the flow velocity profile
 """
 
+###########################################################################################################################
+################################################# Libraries ###############################################################
+###########################################################################################################################
+
 from Support_Functions import *
 import pyqtgraph as pg
 from PySide6.QtWidgets import QWidget, QGridLayout, QLabel,QVBoxLayout,QGraphicsView
 from PySide6.QtCore import QTimer
 from PySide6.QtGui import QColor
-
 import zaber_motion
 from zaber_motion import Units
 from zaber_motion.binary import Connection,CommandCode
 #from zaber_motion.ascii import Connection
-
 import  System_Modules.DAQ_Reader_Global as DAQ_Reader_Global  # Import for use of stop_daq() function
 import System_Modules.scan_area_module as scan_area_module
 
+###########################################################################################################################
 
-###################################################################
-###################################################################
 #Graphic Widget
 
 class ColorGrid(QWidget):

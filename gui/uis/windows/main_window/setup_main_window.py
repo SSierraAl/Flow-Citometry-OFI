@@ -84,6 +84,14 @@ class SetupMainWindow:
             "is_active" : False
         },
         {
+            "btn_icon" : "icon_info.svg",
+            "btn_id" : "btn_camera",
+            "btn_text" : "High Speed Camera",
+            "btn_tooltip" : "Camera",
+            "show_top" : True,
+            "is_active" : False
+        },
+        {
             "btn_icon" : "icon_search.svg",
             "btn_id" : "btn_search",
             "btn_text" : "Calibration",

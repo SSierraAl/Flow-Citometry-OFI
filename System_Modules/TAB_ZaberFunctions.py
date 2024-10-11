@@ -1,9 +1,17 @@
+
+"""
+Module in charge of test different movements on the zabers, and control it indindividually
+
+"""
+
+###########################################################################################################################
+################################################# Libraries ###############################################################
+###########################################################################################################################
+
 import zaber_motion
 from zaber_motion import Units
-
 from zaber_motion.binary import Connection,CommandCode
 #from zaber_motion.ascii import Connection
-
 from random import randint
 import numpy as np
 import pyqtgraph as pg
@@ -11,57 +19,23 @@ import pickle
 from PySide6.QtCore import QTimer
 import time
 from scipy.signal import welch, get_window
+###########################################################################################################################
+
 
 COM_port="COM4" # Port uses for serial communication with Zabers
-
-
 #---------- Init --------------#
 def InitializeZaber(self):
     self.Zaber_COM=COM_port
     try:
         print("------- Zaber Initialization -------")
         with Connection.open_serial_port(self.Zaber_COM) as connection:
-            
-            #print("Check 1")
+
             device_list = connection.detect_devices()
-            #print("Check 1")
-            print("Found {} devices".format(len(device_list)))
-            #print("Check 2")
-            #self.ui.load_pages.z1_slider.setValue(float(device_list[0].get_position())*100/1039370)
-            #self.ui.load_pages.z1_data.setText(str((float(device_list[0].get_position()))*4.95/1039370))
-            # self.ui.load_pages.z1_cm.setChecked(True)
-            # self.ui.load_pages.z1_mm.setChecked(False)
-            # self.ui.load_pages.z1_um.setChecked(False)
-            # self.ui.load_pages.z1_Absolute.setChecked(True)
-            # self.ui.load_pages.z1_Relative.setChecked(False)
-            #print("Check 2")
+            print("INFO: Found {} Zaber devices".format(len(device_list)))
 
-            #self.ui.load_pages.z2_slider.setValue(float(device_list[2].get_position())*100/1039370)
-            #self.ui.load_pages.z2_data.setText(str((float(device_list[2].get_position()))*4.95/1039370))
-            
-            
-            # self.ui.load_pages.z2_cm.setChecked(True)
-            # self.ui.load_pages.z2_mm.setChecked(False)
-            # self.ui.load_pages.z2_um.setChecked(False)
-            # self.ui.load_pages.z2_Absolute.setChecked(True)
-            # self.ui.load_pages.z2_Relative.setChecked(False)
-
-            #print("Check 2")
-            
-            #self.ui.load_pages.z3_slider.setValue(float(device_list[1].get_position())*100/1039370)
-            #self.ui.load_pages.z3_data.setText(str((float(device_list[1].get_position()))*4.95/1039370))
-            
-            
-            # self.ui.load_pages.z3_cm.setChecked(True)
-            # self.ui.load_pages.z3_mm.setChecked(False)
-            # self.ui.load_pages.z3_um.setChecked(False)
-            # self.ui.load_pages.z3_Absolute.setChecked(True)
-            # self.ui.load_pages.z3_Relative.setChecked(False)
-            #print("Check 2")
-            
             def seb():
                 number=CheckDevices()
-                print("tenemos "+ str(number))
+                print("Zaber Devices: "+ str(number))
                 self.ui.load_pages.n_devices_p3.setText(str(number) + " Devices")
             
             def GHome():
