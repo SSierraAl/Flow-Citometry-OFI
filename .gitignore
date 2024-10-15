@@ -4,5 +4,7 @@ __pycache__/
 .git/
 .pyc
 ./DataEXP/
-Temporal_Files/
+Temporal_Files/Images/
+Temporal_Files/Particles/
+Temporal_Files/Scanning/
 

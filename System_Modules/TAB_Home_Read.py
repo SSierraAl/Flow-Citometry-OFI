@@ -14,6 +14,7 @@ import numpy as np
 import pyqtgraph as pg
 from PySide6.QtCore import QTimer
 from Support_Functions import *
+import time
 ###########################################################################################################################
 
 
@@ -138,8 +139,10 @@ def InsertHomeGraphs(self):
                 self.CounterPeaks=self.CounterPeaks+1
                 print(max(self.dataAmp))
                 print(self.CounterPeaks)
+                #Trigger Camera
+                self.Camera_Instance.trigger_cam()
                 np.save(self.Directory+self.FileName+"_"+str(self.number_file)+'_'+str(self.CounterPeaks)+self.exten, self.DAQ_Data)
-            
+                time.sleep(4)
 
         # Particle Search
         #################################################
@@ -153,7 +156,7 @@ def InsertHomeGraphs(self):
                         print(max(self.dataAmp))
                         print(self.CounterPeaks)
                         np.save(self.Directory+self.FileName+"_Calib_"+str(self.Zaber_Pos) +'_'+str(self.number_File)+'_'+str(self.CounterPeaks)+self.exten, self.DAQ_Data)
-            
+
                 else:
                     print('------- ' +str(self.Zaber_Pos)+' / '+str(self.Zaber_Steps[self.ActualStep-1])+ ' Number of Peaks: '+str(self.CounterPeaks)+' --------' )
                     self.CounterCheck=0
@@ -202,6 +205,7 @@ def InsertHomeGraphs(self):
         self.number_file=0
 
         self.Particle_Search=True
+        
 
     def Stop_Search_Particle():
         self.CounterPeaks=0

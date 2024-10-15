@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_pagesXKDcBp.ui'
+## Form generated from reading UI file 'main_pagesfYaRCy.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.4.2
 ##
@@ -1506,7 +1506,7 @@ class Ui_MainPages(object):
 
         self.retranslateUi(MainPages)
 
-        self.pages.setCurrentIndex(1)
+        self.pages.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainPages)
@@ -1533,7 +1533,7 @@ class Ui_MainPages(object):
         self.label_43.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:12pt;\">Max Amp Peak:</span></p></body></html>", None))
         self.Max_Peak_val.setText(QCoreApplication.translate("MainPages", u"00.00", None))
         self.label_22.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">Particle Search</span></p></body></html>", None))
-        self.lineEdit_Directory.setText(QCoreApplication.translate("MainPages", u"./Particles_Data/test/", None))
+        self.lineEdit_Directory.setText(QCoreApplication.translate("MainPages", u"./Temporal_Files/Particles/", None))
         self.label_20.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:12pt;\">Directory:</span></p></body></html>", None))
         self.lineEdit_Name_Files.setText(QCoreApplication.translate("MainPages", u"HFocusing", None))
         self.label_21.setText(QCoreApplication.translate("MainPages", u"<html><head/><body><p><span style=\" font-size:12pt;\">Name Files:</span></p></body></html>", None))

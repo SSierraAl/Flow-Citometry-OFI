@@ -106,15 +106,15 @@ class FrameCapture(QObject):
         print('------ Camera Reading Mode: ON -------')
 
         #Update parameters based on the GUI
-        self.cam.partition_count  = int(self.main_window.ui.load_pages.line_partition_count_cam_2.text())
-        self.cam.frame_rate = int(float(self.main_window.ui.load_pages.line_frame_rate_cam_2.text()))
+        #self.cam.partition_count  = int(self.main_window.ui.load_pages.line_partition_count_cam_2.text())
+        #self.cam.frame_rate = int(float(self.main_window.ui.load_pages.line_frame_rate_cam_2.text()))
         #Number of images to save
-        self.trigger_frames = int(self.main_window.ui.load_pages.line_trigger_frame_cam_2.text())
-        self.snapshots_folder = self.main_window.ui.load_pages.line_directory_cam_2.text()
-        self.cam.resolution = (int(self.main_window.ui.load_pages.line_resolution_cam_w_2.text()),int(self.main_window.ui.load_pages.line_resolution_cam_h_2.text()))
-        self.cam.exposure =int(float(self.main_window.ui.load_pages.line_exposure_cam_2.text()))
+        #self.trigger_frames = int(self.main_window.ui.load_pages.line_trigger_frame_cam_2.text())
+        #self.snapshots_folder = self.main_window.ui.load_pages.line_directory_cam_2.text()
+        #self.cam.resolution = (int(self.main_window.ui.load_pages.line_resolution_cam_w_2.text()),int(self.main_window.ui.load_pages.line_resolution_cam_h_2.text()))
+        #self.cam.exposure =int(float(self.main_window.ui.load_pages.line_exposure_cam_2.text()))
         #Resize display widget
-        self.main_window.ui.load_pages.image_label.resize(self.cam.resolution[0],self.cam.resolution[1])
+        #self.main_window.ui.load_pages.image_label.resize(self.cam.resolution[0],self.cam.resolution[1])
 
 
         # Check parameters ###################################################################
@@ -130,6 +130,7 @@ class FrameCapture(QObject):
         #####################################################################################
 
         #Initialize Class
+        """
         self.frames = []
         self.worker_Camera = WorkerCamera(self.cam,self.cam.resolution,self.trigger_frames,self.snapshots_folder,self.main_window.ui.load_pages.image_label,self.global_counter_cam)
         self.workCAM_requested.connect(self.worker_Camera.capture_frame)
@@ -141,6 +142,7 @@ class FrameCapture(QObject):
         self.worker_Camera.startstart()
         # Call the infinit loop to request the camera
         self.workCAM_requested.emit(0)
+        """
 
 
 
@@ -160,13 +162,18 @@ class FrameCapture(QObject):
         self.worker_Camera.signal_P()
 
     def trigger_particle_signal_prev(self):
-        self.worker_Camera.signal_P_Prev()
+        
+        self.cam.is_busy()
+        #self.worker_Camera.signal_P_Prev()
 
     def record_cam(self):
-        self.worker_Camera.signal_Record()
+        self.cam.record()
+        #self.worker_Camera.signal_Record()
 
     def trigger_cam(self):
-        self.worker_Camera.signal_Trigger()
+
+        self.cam.trigger()
+        #self.worker_Camera.signal_Trigger()
 
 
 

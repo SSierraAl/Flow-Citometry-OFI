@@ -101,7 +101,7 @@ class ColorGrid(QWidget):
 
     def exportar_Matrix_CSV(self):
         df = pd.DataFrame(self.CSV_Moments_Matrix)
-        path=r'.\Temporal_Files'
+        path=r'.\Temporal_Files\Scanning'
         df.to_csv(path+r'\Scanning_Moments_CSV.csv', index=True) # r to declare raw string
         df = pd.DataFrame(self.CSV_Moments_M0_Matrix)
         df.to_csv(path+r'\Scanning_Moments_M0_CSV.csv', index=True)
@@ -467,7 +467,7 @@ class Scan_functions:
             # Save Avg spectrum for each row to .csv, only in normal scan mode and for x direction
             # NOTE: if necessary it should work for y, but not tested and not currently required.
             if self.main_window.edge_scan_mode is False and self.main_window.axis == 'x':
-                path=r'.\Temporal_Files'
+                path=r'.\Temporal_Files\Scanning'
                 self.main_window.Data_Spectrum_Array.to_csv(path+r'\Scanning_Avg_Spectrum'+str(actual_pos)+'.csv', index=True)
             self.main_window.Data_Spectrum_Array=pd.DataFrame()
         
@@ -502,7 +502,7 @@ class Scan_functions:
                 # Save x direction scan moment values to .csv
                 if self.main_window.edge_scan_mode is False and self.main_window.axis == 'x':
                     self.main_window.color_grid_widget.exportar_Matrix_CSV()
-                    path=r'.\Temporal_Files'
+                    path=r'.\Temporal_Files\Scanning'
                     self.main_window.Moment_Dev.to_csv(path+r'\Scanning_Moments_Dev.csv', index=True)
                 
                 print('------  Scan finished --------')
@@ -796,7 +796,7 @@ def Set_Scanning_Tab(self, scan_functionality):
 
 
     def Get_Report():
-        plot_grouped_error_bars('.\Temporal_Files\Scanning_Moments_Dev.csv', int((self.Pos_Y2_Scan-self.Pos_Y1_Scan)/self.cell_size))
+        plot_grouped_error_bars('.\Temporal_Files\Scanning\Scanning_Moments_Dev.csv', int((self.Pos_Y2_Scan-self.Pos_Y1_Scan)/self.cell_size))
 
     ###################################################################
     ###################################################################
