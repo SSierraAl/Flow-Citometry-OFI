@@ -117,8 +117,8 @@ class Scan_functions:
         
         # Button connections
         self.main_window.ui.load_pages.Calib_Reset_Scan_but.clicked.connect(self.reset_refresh_scan)
-        self.main_window.ui.load_pages.Stop_x_but.clicked.connect(self.stop_z1) # Button for stopping X
-        self.main_window.ui.load_pages.Stop_Y_but.clicked.connect(self.stop_z2)
+        self.main_window.ui.load_pages.Stop_x_but.clicked.connect(self.stop_z2) # Button for stopping X
+        self.main_window.ui.load_pages.Stop_Y_but.clicked.connect(self.stop_z1)
         self.main_window.ui.load_pages.continuous_scanX_but.clicked.connect(self.start_move_x)
         self.main_window.ui.load_pages.continuous_scanY_but.clicked.connect(self.start_move_y)
 
@@ -181,21 +181,12 @@ class Scan_functions:
             
             # UNIT CONVERSION: position = data x (Micropstep Size)
             # data to zaber = position / microstep size
-            position_absolute = int(position / (0.047625)) #* 10**(-6))
             
             # Send move command to Zaber
             #Binary
             device_list = connection.detect_devices()
             device_list[zaber].move_absolute(position, Units.LENGTH_MICROMETRES)
-            #Ascii
-            #connection.generic_command(f"move abs {position_absolute}", zaber, 0, True, 500)
-            # HOLD until Zaber finished moving
-            # NOTE: this blocks the rest of the program and freezes the UI, but is required for current implementation-
-            # of continuous measurements. Otherwise the rest of the program starts measurements etc. while zaber is not
-            # yet in start position.
-            #actual_status = connection.generic_command("get motion.busy",zaber, 0, True, 500)
-            #while actual_status.status == 'BUSY':
-            #    actual_status = connection.generic_command("get motion.busy",zaber, 0, True, 500)
+
 
     def get_current_position(self, zaber):
         """Gets the current position of a Zaber
@@ -208,14 +199,6 @@ class Scan_functions:
         """
         with Connection.open_serial_port(self.main_window.Zaber_COM) as connection:
             
-            #Ascii
-            #return_value = connection.generic_command("get pos", zaber, 0, True, 500)
-            #current_position_absolute = float(return_value.data) #NOTE: .data contains the absolute position
-            
-            # Unit conversion: position = data × (Microstep Size)
-            #current_position_um = current_position_absolute * (0.047625) #* 10**(-6))
-            #print(f"INFO: Current position of Zaber {zaber}: {current_position_um} um")
-
             #Binary
             device_list = connection.detect_devices()
             current_position_um=device_list[zaber].get_position(Units.LENGTH_MICROMETRES)
@@ -231,24 +214,13 @@ class Scan_functions:
         # It is easiest to keep the override and manual things separate, to make sure there is
         # no weird behaviour with other code.
         
-        if self.main_window.edge_scan_mode is True:
-            print("INFO: using algorithm override settings for continuous movement")
-            self.main_window.distance = abs(self.main_window.Pos_X2_Scan_override - self.main_window.Pos_X1_Scan_override)
-            self.main_window.time_to_travel = abs(self.main_window.distance / float(self.main_window.speed_override))*1000 # Milliseconds
-            self.main_window.cell_size = int(self.main_window.cell_size_override) 
-            self.main_window.time_timer_scan=abs((self.main_window.time_to_travel/(self.main_window.distance/self.main_window.cell_size)))
-        else:
-            print("INFO: using interface settings for continuous movement")
-            self.main_window.distance = abs(self.main_window.Pos_X2_Scan - self.main_window.Pos_X1_Scan)
-            self.main_window.time_to_travel = abs((self.main_window.distance / float(self.main_window.ui.load_pages.lineEdit_speed_ums.text())))*1000 # Milliseconds
-            self.main_window.cell_size = int(self.main_window.ui.load_pages.lineEdit_Pixel_size.text()) 
-            self.main_window.time_timer_scan=abs((self.main_window.time_to_travel/(self.main_window.distance/self.main_window.cell_size)))
-       
-        # NOTE: Debug prints for used settings
-        #print(f"INFO: Speed settings: {self.main_window.speed} {float(self.main_window.ui.load_pages.lineEdit_speed_ums.text())}, {self.main_window.speed_override}")
-        #print(f"INFO:  Scan settings: distance:{self.main_window.distance}; time to travel:{self.main_window.time_to_travel}; cell size: {self.main_window.cell_size}; time timer scan:{self.main_window.time_timer_scan}")
-        #print(f"{self.main_window.distance}, {self.main_window.time_to_travel}, {self.main_window.cell_size},{self.main_window.time_timer_scan}")
 
+        print("INFO: using interface settings for continuous movement")
+        self.main_window.distance = abs(self.main_window.Pos_X2_Scan - self.main_window.Pos_X1_Scan)
+        self.main_window.time_to_travel = abs((self.main_window.distance / float(self.main_window.ui.load_pages.lineEdit_speed_ums.text())))*1000 # Milliseconds
+        self.main_window.cell_size = int(self.main_window.ui.load_pages.lineEdit_Pixel_size.text()) 
+        self.main_window.time_timer_scan=abs((self.main_window.time_to_travel/(self.main_window.distance/self.main_window.cell_size)))
+    
         print("INFO: attempting Zaber move constant speed")
         try:
             # TODO:  switch the order of if statement, makes more sense to check for edge scan mode is true
@@ -258,7 +230,7 @@ class Scan_functions:
                 # data = velocity / (Microstep Size) * (1.6384 s)
                 # NOTE: data is received from or sent to Zabers
                 
-                speed_absolute = int(self.main_window.speed / (0.047625) * 1.6384)
+                speed_absolute =int((((self.main_window.speed/1.55)/10)*1.6384/0.047625))
                 print(f"INFO: absolute speed setting: {speed_absolute}")
 
                 print("INFO: Sending Zaber move command")
@@ -275,37 +247,6 @@ class Scan_functions:
                 #with Connection.open_serial_port(self.main_window.Zaber_COM) as connection:
                 #    connection.generic_command(f"move vel {speed_absolute}", 1, 0, True, 500)    
 
-            else:
-                print (f"EDGE SCAN MODE: Algorithm Override speed setting: {self.main_window.speed_override}")
-                
-                # UNIT CONVERSION: velocity = data × (Microstep Size) / (1.6384 s)
-                override_speed_absolute = int(self.main_window.speed_override / (0.047625) * 1.6384)
-                print(f"INFO: absolute speed setting: {override_speed_absolute}")
-                
-                print(f"INFO: Sending Zaber move command in {self.main_window.axis} direction")
-                if self.main_window.axis == 'x':
-                    
-                    #Binary
-                    with Connection.open_serial_port(self.main_window.Zaber_COM) as connection:
-                        connection.generic_command(3, CommandCode.MOVE_AT_CONSTANT_SPEED, override_speed_absolute)
-                    #Ascii
-                    #with Connection.open_serial_port(self.main_window.Zaber_COM) as connection:
-                    #    response = connection.generic_command(f"move vel {override_speed_absolute}", 1, 0, True, 500)
-                    #    print(response)
-                
-                elif self.main_window.axis == 'y':
-                
-                    #Binary
-                    with Connection.open_serial_port(self.main_window.Zaber_COM) as connection:
-                        connection.generic_command(1, CommandCode.MOVE_AT_CONSTANT_SPEED, override_speed_absolute)
-                    
-                    #Ascii
-                    #with Connection.open_serial_port(self.main_window.Zaber_COM) as connection:
-                    #    response = connection.generic_command(f"move vel {override_speed_absolute}", 2, 0, True, 500)
-                    #    print(response)
-                
-                else:
-                    print("ERROR: invalid axis argument")
         except:
             print("ERROR: Zaber move command failed")
             self.start_continuous_movement() # retry
@@ -347,9 +288,11 @@ class Scan_functions:
             with the lowest input resulting in 255, and max input in 0.
         """
         min_x = 0 #maybe change to 17000
-        max_x = 30 #maybe change to 45000
+        max_x = 40 #maybe change to 45000
         min_y = 0
         max_y = 255
+        if oldcolor>max_x:
+            print("COLOR SATURATION ----- check intervals")
         newcolor = ((oldcolor - min_x) * (max_y - min_y) / (max_x - min_x)) + min_y
         return newcolor
 
@@ -385,24 +328,15 @@ class Scan_functions:
         # Determine which source of settings should be used
         # NOTE: at the moment only edge_scan_mode needs to apply specific settings
         # But more modes can be added, or other functions can just use the same ..._override variables.
-        if self.main_window.edge_scan_mode is True:
-            # Use algorithm override settings
-            print("INFO: using algorithm override scan settings")
-            self.main_window.speed = self.main_window.override_user_settings
-            self.main_window.Pos_Y1_Scan = self.main_window.Pos_Y1_Scan_override
-            self.main_window.Pos_Y2_Scan = self.main_window.Pos_Y2_Scan_override
-            self.main_window.Pos_X1_Scan = self.main_window.Pos_X1_Scan_override
-            self.main_window.Pos_X2_Scan = self.main_window.Pos_X2_Scan_override
-            self.main_window.cell_size = self.main_window.cell_size_override
-        else:
-            # Use user interface settings
-            print("INFO: using user interface scan settings")
-            self.main_window.speed = float(self.main_window.ui.load_pages.lineEdit_speed_ums.text())
-            self.main_window.Pos_Y1_Scan = float(self.main_window.ui.load_pages.lineEdit_y1_scan.text())
-            self.main_window.Pos_Y2_Scan = float(self.main_window.ui.load_pages.lineEdit_y2_scan.text())
-            self.main_window.Pos_X1_Scan = float(self.main_window.ui.load_pages.lineEdit_x1_scan.text())
-            self.main_window.Pos_X2_Scan = float(self.main_window.ui.load_pages.lineEdit_x2_scan.text())
-            self.main_window.cell_size = int(self.main_window.ui.load_pages.lineEdit_Pixel_size.text())
+
+        # Use user interface settings
+        print("INFO: using user interface scan settings")
+        self.main_window.speed = float(self.main_window.ui.load_pages.lineEdit_speed_ums.text())
+        self.main_window.Pos_Y1_Scan = float(self.main_window.ui.load_pages.lineEdit_y1_scan.text())
+        self.main_window.Pos_Y2_Scan = float(self.main_window.ui.load_pages.lineEdit_y2_scan.text())
+        self.main_window.Pos_X1_Scan = float(self.main_window.ui.load_pages.lineEdit_x1_scan.text())
+        self.main_window.Pos_X2_Scan = float(self.main_window.ui.load_pages.lineEdit_x2_scan.text())
+        self.main_window.cell_size = int(self.main_window.ui.load_pages.lineEdit_Pixel_size.text())
 
         #Update GUI width and height
         self.main_window.g_W=abs(int((self.main_window.Pos_X2_Scan-self.main_window.Pos_X1_Scan)/self.main_window.cell_size))
@@ -427,7 +361,7 @@ class Scan_functions:
         # Move first to (X1,Y1)
         self.move_to_position(0,self.main_window.Pos_Y1_Scan)
         self.move_to_position(2,self.main_window.Pos_X1_Scan)
-        
+ 
         # (Re)start DAQ if required.
         # NOTE: this is intentionally done after move_to_position, to make sure the DAQ
         # does not start measuring things during the movement to the starting position
