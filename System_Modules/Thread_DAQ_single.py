@@ -50,7 +50,7 @@ class WorkerDAQ(QObject):
             #Signal Adquisition ########################################################
             #Add Sensor
             print(f"INFO: Selected DAQ device: {self.DAQ_Device} ")
-            task_Laser.ai_channels.add_ai_voltage_chan(self.DAQ_Device,max_val=5, min_val=-5)
+            task_Laser.ai_channels.add_ai_voltage_chan(self.DAQ_Device,max_val=10, min_val=-10)
             # Set Sampling clocks
             task_Laser.timing.cfg_samp_clk_timing(rate=self.Laser_frequency, sample_mode=constants.AcquisitionType.CONTINUOUS)
             #Initialize Stream reader

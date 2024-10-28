@@ -97,19 +97,21 @@ def InsertHomeGraphs(self):
 
     def data_adquisition_home():
 
+        
         ######### Update Laser data FFT and Voltage
-        self.DAQ_Data = self.threadDAQ.DAQ_Data
-
+        self.DAQ_Data = self.threadDAQ.DAQ_Data.copy()
+        self.DAQ_DataFIN=self.DAQ_Data.copy()
         # Apply bandpass filter
-        self.data_DAQ2 = butter_bandpass_filter(self.DAQ_Data, self.low_freq_filter, self.high_freq_filter, self.order_filter, self.Laser_Frequency)
+        self.data_DAQ2 = butter_bandpass_filter(self.DAQ_DataFIN, self.low_freq_filter, self.high_freq_filter, self.order_filter, self.Laser_Frequency)
 
         # Calculate FFT for the filtered signal
         self.dataAmp, self.dataFreq, _ = FFT_calc(self.data_DAQ2, self.Laser_Frequency)
 
+        #"""
         # Check if CounterAvg has not reached the limit
         if self.CounterAvg<self.VectorsAvg:
             self.Freq_Data[self.CounterAvg]=self.dataAmp
-            self.CounterAvg=self.CounterAvg+1
+            #self.CounterAvg=self.CounterAvg+1
         else:
             self.CounterAvg=0
 
@@ -129,21 +131,23 @@ def InsertHomeGraphs(self):
 
             
         self.dataAmp_Avg=(self.Freq_Data.mean(axis=1))
-
+        #"""
 
 
         # Particle Search
         #################################################
         if self.Particle_Search==True:
-            if (max(self.dataAmp)>=self.Amp_Peak_Search):
+            if (max(self.dataAmp)>self.Amp_Peak_Search):
+                self.timerADQ.stop()
                 self.CounterPeaks=self.CounterPeaks+1
-                print(max(self.dataAmp))
-                print(self.CounterPeaks)
                 #Trigger Camera
+                np.save(self.Directory+self.FileName+"_"+str(self.number_file)+'_'+str(self.CounterPeaks)+self.exten, self.DAQ_DataFIN)
                 self.Camera_Instance.trigger_cam()
-                np.save(self.Directory+self.FileName+"_"+str(self.number_file)+'_'+str(self.CounterPeaks)+self.exten, self.DAQ_Data)
-                time.sleep(4)
+                #time.sleep(4)
+                for _ in range(600000000):  # Puedes ajustar el número de iteraciones si es necesario
+                    pass
 
+                self.timerADQ.start()
         # Particle Search
         #################################################
         if self.calibration_check==True:
