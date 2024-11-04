@@ -36,6 +36,7 @@ def FFT_calc(datos, samplefreq):
         Phase spectrum of the signal.
     """
     n = len(datos)  # Length of the data
+    print(n)
     # Perform FFT and calculate amplitude and phase
     datos = np.asarray(datos, dtype=np.float64)
     fft_result = np.fft.rfft(datos)  # Compute FFT
@@ -46,7 +47,7 @@ def FFT_calc(datos, samplefreq):
     return amplitude, freq_fft, phase
 
 # Load the .npy file
-data = np.load('.\Temporal_Files\Particles\HFocusing_0_11.npy')
+data = np.load('.\Temporal_Files\Particles\HFocusing_5_10_2um2_0_11.npy')
 
 # Filter parameters
 lowcut = 11000  # Lower cutoff frequency (Hz)

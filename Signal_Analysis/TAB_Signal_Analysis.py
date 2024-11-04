@@ -140,4 +140,4 @@ lay = layout([
     Tab_Lay_reader
 ])
 
-curdoc().add_root(layT)
+curdoc().add_root(lay)

@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import curve_fit
 from Support_Functions import Load_New_Data, FFT_calc, butter_bandpass_filter
+import os
 
 def gaussian(x, amplitude, mean, stddev):
     return amplitude * np.exp(-(x - mean)**2 / (2 * stddev**2))
@@ -44,6 +45,7 @@ def Set_Reader_Data(path, parameters):
     button_refresh = Button(label="Refresh")
     button_next = Button(label="Next")
     button_section = Button(label="Section")
+    button_prev = Button(label="Prev")
 
     # Plot Creation Function to Avoid Redundancy
     def create_figure(title, x_axis, y_axis, width, height, source, color="blue", hover=True):
@@ -127,17 +129,61 @@ def Set_Reader_Data(path, parameters):
         scroll_menu.value = selected_column  # Update dropdown selection
         update_data_sources(Original_Dataframe[scroll_menu.value])  # Refresh graph data
 
+    # Function to Move to the Previous Column
+    def prev_column():
+        nonlocal Counter_Column
+        Counter_Column = (Counter_Column - 1) % len(columnas)  # Cycle back to start if at the end
+        selected_column = columnas[Counter_Column]
+        scroll_menu.value = selected_column  # Update dropdown selection
+        update_data_sources(Original_Dataframe[scroll_menu.value])  # Refresh graph data
+
+
+
+    # Load your files in the initial setup
+    def load_files(folder_path):
+        return [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+    # Example folder where files are stored
+
+    file_list = load_files(path_folder)
+    # Create a delete button and add functionality
+    button_delete = Button(label="Delete File", button_type="danger")
+
+    # Clear data sources if no files are left
+    def clear_data_sources():
+        source_original_data.data = {'data_x_axis': [], 'daya_y_axis': []}
+        source_filtered_data.data = {'data_x_axis': [], 'daya_y_axis': []}
+        # Clear other sources similarly
+
+    # Function to delete the selected file
+    def delete_current_file():
+        selected_file = scroll_menu.value  # Get the currently selected file from the scroll menu
+        file_path = os.path.join(path_folder, selected_file)
+        try:
+            os.remove(file_path)  # Delete the file
+            file_list.remove(selected_file)  # Remove from file list
+            scroll_menu.options = file_list  # Update scroll menu
+            if file_list:  # If files remain, select the next available file
+                scroll_menu.value = file_list[0]
+                update_data_sources(Original_Dataframe[scroll_menu.value])
+            else:  # No files left, clear the data sources
+                clear_data_sources()
+        except Exception as e:
+            print(f"Error deleting file {selected_file}: {e}")
+
+    button_delete.on_click(delete_current_file)
+
 
     # Button Actions
     button_refresh.on_click(lambda: update_data_sources(Original_Dataframe[scroll_menu.value]))
     button_section.on_click(update_section_data)
     button_next.on_click(next_column)
+    button_prev.on_click(prev_column)
 
     # Layout Setup
-    lay = layout([
-        [scroll_menu, button_refresh, button_next,button_section],
+    lay2 = layout([
+        [scroll_menu, button_refresh,button_prev, button_next,button_section,button_delete],
         [FilterFFT,Section_FilteredFFT], [filterImpact],
         [Section_Particle, Section_Particle_Filtered]
     ])
 
-    return lay
+    return lay2
