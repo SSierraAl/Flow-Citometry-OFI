@@ -66,6 +66,9 @@ def process_folder(folder_path, samplefreq, lowcut, highcut, order):
         # Apply bandpass filter
         filtered_signal = butter_bandpass_filter(signal, lowcut, highcut, order, samplefreq)
         
+        #Plot the max amplitude
+        #peak_frequency=max(np.abs(filtered_signal))
+
         # Find the peak frequency
         peak_frequency = find_peak_frequency(filtered_signal, samplefreq)
         peak_frequencies.append(peak_frequency)
@@ -92,9 +95,9 @@ folder_2um = 'C:/Users/ssierra/Downloads/OFI_Flow_Citometry_Repo/OFI-Flow-Citome
 folder_4um = 'C:/Users/ssierra/Downloads/OFI_Flow_Citometry_Repo/OFI-Flow-Citometry/GlobalGUI/Particles_Data/DB_4um'
 folder_10um = 'C:/Users/ssierra/Downloads/OFI_Flow_Citometry_Repo/OFI-Flow-Citometry/GlobalGUI/Particles_Data/DB_10um'
 
-folder_2um = 'D:/particles/2um_DB' #2um_DB_full tambien funciona
+folder_2um = 'D:/particles/2um_DB_Full' #2um_DB_full tambien funciona
 folder_4um = 'D:/particles/DB_4um' #4_um_DB lento
-folder_10um = 'D:/particles/10um_DB' #DB_10um tambien funciona
+folder_10um = 'D:/particles/10um_DB' #DB_10um funciona
 
 
 # Process each folder to get the peak frequencies

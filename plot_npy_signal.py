@@ -47,7 +47,10 @@ def FFT_calc(datos, samplefreq):
     return amplitude, freq_fft, phase
 
 # Load the .npy file
-data = np.load('.\Temporal_Files\Particles\HFocusing_5_10_2um2_0_11.npy')
+data = np.load('D:/particles/Paper_DATA_4um/HFocusing_5_10_4um_0_4.npy1838.npy')
+
+print(len(data))
+ASasAS
 
 # Filter parameters
 lowcut = 11000  # Lower cutoff frequency (Hz)

@@ -25,7 +25,7 @@ Counter_Column = 0
 ###############################################################################################
 
 # Description
-desc = Div(text=open(".\description.html").read())
+desc = Div(text=open("..\description.html").read())
 
 # Folder selection elements
 folder_label = Div(text="Selected Folder:", width=600)
@@ -65,7 +65,7 @@ def create_experiment_parameters():
         ("Acquisition frequency [Hz]:", "2000000"),
         ("Angle [deg]:", "80"),
         ("Band pass filter order:", "4"),
-        ("Low Frequency [Hz]:", "12000"),
+        ("Low Frequency [Hz]:", "7000"),
         ("High Frequency [Hz]:", "80000")
     ]
 
@@ -121,8 +121,10 @@ param_layout, exp_parameters = create_experiment_parameters()
 # Reader Layout ###############################################################################
 ###############################################################################################
 
-# Initial load of reader layout
+# Load Data and Display info
 Tab_Lay_reader = column(Set_Reader_Data(folder_path_work.text, exp_parameters))
+
+
 
 ###############################################################################################
 # Main Layout #################################################################################
@@ -131,11 +133,11 @@ Tab_Lay_reader = column(Set_Reader_Data(folder_path_work.text, exp_parameters))
 # Organize the layout using sections
 lay = layout([
     [desc],
+    param_layout,
+    Spacer(height=10),
     [select_button],
     [folder_label],
     [folder_path_work],
-    Spacer(height=10),
-    param_layout,
     Spacer(height=20),
     Tab_Lay_reader
 ])

@@ -105,7 +105,7 @@ def Get_valuable_section(data_Y,dst_folder, filename):
                         ####### Save  Valid_P_Y
                         # Save the file to the new destination
                         save_path = os.path.join(dst_folder, filename+str(counter_counter))
-                        np.save(save_path, valid_P_y)
+                        np.save(save_path, data_Y[highlight_mask])
                         print(f"File {filename} processed and saved to {dst_folder}")
                         counter_counter=counter_counter+1
                         #filterImpact.line(valid_P_x, valid_P_y, line_width=2, line_color="green", legend_label="P_anomaly_fit")
@@ -148,7 +148,7 @@ def Get_valuable_section(data_Y,dst_folder, filename):
                         #Save valid_P_Y
                         
                         save_path = os.path.join(dst_folder, filename+str(counter_counter))
-                        np.save(save_path, valid_P_y)
+                        np.save(save_path, data_Y[highlight_mask])
                         print(f"File {filename} processed and saved to {dst_folder}")
                         counter_counter=counter_counter+1
                         #filterImpact.line(valid_P_x, valid_P_y, line_width=2, line_color="green", legend_label="Valid_P")
@@ -225,7 +225,7 @@ def Get_valuable_section(data_Y,dst_folder, filename):
                         if (max(y_curve)> y_curve[0]+0.05) and (max(y_curve)> y_curve[-1]+0.05):
                             #Save Valid_P_Y
                             save_path = os.path.join(dst_folder, filename+str(counter_counter))
-                            np.save(save_path, valid_P_y)
+                            np.save(save_path, data_Y[highlight_mask])
                             print(f"File {filename} processed and saved to {dst_folder}")
                             counter_counter=counter_counter+1
 
@@ -267,7 +267,7 @@ def Get_valuable_section(data_Y,dst_folder, filename):
                         if (max(y_curve)> y_curve[0]+0.05) and (max(y_curve)> y_curve[-1]+0.05):
                             # Save Valid_P_Y
                             save_path = os.path.join(dst_folder, filename+str(counter_counter))
-                            np.save(save_path, valid_P_y)
+                            np.save(save_path, data_Y[highlight_mask])
                             print(f"File {filename} processed and saved to {dst_folder}")
                             counter_counter=counter_counter+1
                             #filterImpact.line(valid_P_x, valid_P_y, line_width=2, line_color="green", legend_label="Valid_P")
@@ -311,13 +311,10 @@ def process_and_save_files(path_folder,source_folders, destination_folders):
 
 path_folder="D:/particles/"
 
-Name_Folder=['signal_10um',
-             'signal_4um',
-             'signal_2um'
-             ]
+Name_Folder=['signal_10um_CAM',
+             'signal_4um_CAM']
 
-Final_Folder=['10um_DB',
-             '4um_DB',
-             '2um_DB']
+Final_Folder=['10um_DB_RAW',
+             '4um_DB_RAW']
 
 process_and_save_files(path_folder,Name_Folder, Final_Folder)
