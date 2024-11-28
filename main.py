@@ -28,13 +28,15 @@ from System_Modules.TAB_Home_Read import *
 #from SignalAdquisition import *
 from System_Modules.DAQ_Reader_Global import *
 from System_Modules.TAB_Scanning import *
-from Signal_Analysis.TAB_Bokeh_Server import *
+#from Signal_Analysis.TAB_Bokeh_Server import *
 from System_Modules.TAB_ZaberFunctions import *
 from System_Modules.TAB_Camera import *
 
 
 import sys
 from queue import Queue
+
+print('sebas')
 
 # Shared data structure server and app
 shared_queue = Queue()
@@ -77,7 +79,7 @@ class MainWindow(QMainWindow):
 
         # SET SERVER TAB
         # ///////////////////////////////////////////////////////////////
-        self.Server_Instance = Server_Init_Bokeh(self, shared_queue)
+        #self.Server_Instance = Server_Init_Bokeh(self, shared_queue)
 
         # SET CAMERA TAB
         # ///////////////////////////////////////////////////////////////
