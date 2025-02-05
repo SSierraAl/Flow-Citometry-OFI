@@ -26,9 +26,10 @@ def load_and_average_noise(noise_files):
     for file in noise_files:
         data = np.load(file)
         data=data[0:2500]
-        data = butter_bandpass_filter(data, 7000, 80000, 4, 2000000)
+        data = butter_bandpass_filter(data, 4000, 50000, 4, 2000000)
         all_noise.append(data)
     average_noise = np.mean(all_noise, axis=0)
+    np.save('average_noise_2Mhz.npy',average_noise, )
     return average_noise
 
 # Step 2: Load and process signal files
@@ -99,11 +100,6 @@ def plot_candlestick(snr_results, output_file):
     # Save the plot as a high-quality vector graphic
     plt.savefig(output_file, format='pdf', dpi=300)
     plt.show()
-
-
-
-
-
 
 
 # Main execution

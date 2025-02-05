@@ -25,7 +25,8 @@ def load_files_from_folder(folder_path):
             data.append(signal)
     return data
 #Params: display_min_freq=7000, display_max_freq=40000, nperseg=512, noverlap=384 -> Accuracy: 0.6307
-def extract_spectrogram_features(folder_path, fs):
+def extract_spectrogram_features(folder_path):
+    fs=2000000
     """Extract spectrogram features for each signal in the folder."""
     signals = load_files_from_folder(folder_path)
     features = []

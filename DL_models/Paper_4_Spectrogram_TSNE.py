@@ -15,7 +15,7 @@ from scipy.signal import decimate
 from scipy.signal import spectrogram, butter, filtfilt
 from scipy.signal import decimate
 from Support_Functions import Load_New_Data, FFT_calc, butter_bandpass_filter
-
+import random
 
 # Butterworth bandpass filter function
 def butter_bandpass_filter(data, lowcut, highcut, fs, order=4):
@@ -27,6 +27,66 @@ def butter_bandpass_filter(data, lowcut, highcut, fs, order=4):
     return y
 
 
+# Data augmentation techniques ######################################
+def data_augmentation(data, labels, total_augmented_samples):
+    """
+    Augments the dataset to generate a specific number of new samples.
+    """
+    def add_noise(signal, noise_level=0.02):
+        noise = np.random.normal(0, noise_level, signal.shape)
+        return signal + noise
+
+    def time_shift(signal, shift_factor=0.2):
+        shift_samples = int(len(signal) * shift_factor)
+        return np.roll(signal, shift_samples)
+
+    def invert_signal(signal):
+        return -signal
+
+    def random_interpolation(signal, factor=0.1):
+        num_points = int(len(signal) * factor)
+        random_indices = np.random.choice(len(signal), num_points, replace=False)
+        interpolated_signal = signal.copy()
+        interpolated_signal[random_indices] = np.interp(random_indices, np.arange(len(signal)), signal)
+        return interpolated_signal
+
+    def bitwise_downsample(signal, resolution=50):
+        return np.floor(signal * resolution) / resolution
+
+    def apply_random_augmentations(signal):
+        augmentations = [
+            lambda x: add_noise(x, noise_level=random.uniform(0.01, 0.05)),
+            lambda x: time_shift(x, shift_factor=random.uniform(0.1, 0.5)),
+            invert_signal,
+            lambda x: random_interpolation(x, factor=random.uniform(0.05, 0.2)),
+            lambda x: bitwise_downsample(x, resolution=random.randint(10, 100)),
+        ]
+        num_augmentations = random.randint(1, len(augmentations))
+        selected_augmentations = random.sample(augmentations, num_augmentations)
+        for augmentation in selected_augmentations:
+            signal = augmentation(signal)
+        return signal
+
+    # Initialize containers
+    data_aug, labels_aug = [], []
+    
+    # Number of augmented samples per class
+    num_classes = len(np.unique(labels))
+    samples_per_class = total_augmented_samples // num_classes
+
+    # Perform augmentation per class
+    for class_label in np.unique(labels):
+        class_indices = np.where(labels == class_label)[0]
+        for _ in range(samples_per_class):
+            idx = random.choice(class_indices)  # Randomly choose a sample from the class
+            augmented_signal = apply_random_augmentations(data[idx])
+            data_aug.append(augmented_signal)
+            labels_aug.append(class_label)
+
+    return np.array(data_aug), np.array(labels_aug)
+
+
+
 def load_files_from_folder(folder_path):
     """Load all numpy files from a given folder."""
     data = []
@@ -34,11 +94,14 @@ def load_files_from_folder(folder_path):
         if filename.endswith(".npy"):
             file_path = os.path.join(folder_path, filename)
             signal = np.load(file_path)
-            signal = butter_bandpass_filter(signal, 7000, 40000, 2000000)
+            signal = butter_bandpass_filter(signal, 8000, 40000, 2000000)
             # Downsample the signal
-            #signal = decimate(signal, 3)  # Downsample by a factor of 4
+            #signal = decimate(signal, 4)  # Downsample by a factor of 4
             data.append(signal)
-    return data
+
+    data_aug, y_train_aug = data_augmentation(data, [0], 1)
+    data_combined = np.concatenate([data_aug, data], axis=0)
+    return data_combined
 
 def extract_spectrogram_features(folder_path, fs):
     """Extract spectrogram features for each signal in the folder."""
@@ -46,11 +109,11 @@ def extract_spectrogram_features(folder_path, fs):
     features = []
     for signal in signals:
         # Compute spectrogram
-        f, t, Sxx = spectrogram(signal, fs=fs, nperseg=500, noverlap=375)
+        f, t, Sxx = spectrogram(signal, fs=fs, nperseg=128, noverlap=64)
 
 
-        display_max_freq = 40000
-        display_min_freq= 5000
+        display_max_freq = 50000
+        display_min_freq= 4000
         # Extract relevant frequency range
         f_idx = (f >= display_min_freq) & (f <= display_max_freq)
         Sxx_display = Sxx[f_idx, :].flatten()  # Flatten the spectrogram data for this range
@@ -61,7 +124,7 @@ def extract_spectrogram_features(folder_path, fs):
     return np.array(features)
 
 # New sampling frequency after downsampling
-fs_downsampled = 500000
+fs_downsampled = 2000000
 
 # Load and extract features for each category with downsampled signals
 data_2um = extract_spectrogram_features('D:/particles/Paper_DATA_2um_augmented', fs_downsampled)
