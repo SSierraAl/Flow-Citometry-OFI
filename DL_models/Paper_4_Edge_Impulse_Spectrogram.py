@@ -159,13 +159,6 @@ def plot_signal_and_spectrogram(signal, spectrogram, title="Signal and Spectrogr
 def extract_spectrogram_features_from_raw(data):
     spectrograms = []
     for signal in data:
-        #Previous
-        #spectrogram = tf.signal.stft(signal, frame_length=Nperseg, frame_step=Noverlap, fft_length=Nperseg)
-        #Sxx = tf.abs(spectrogram)
-        #Sxx = tf.expand_dims(Sxx, -1)  # Add channel dimension
-        #Sxx = tf.image.resize(Sxx, [63, columns])  # Resize for CNN compatibility
-        #spectrograms.append(Sxx.numpy())
-
         #NEW
         # Compute the spectrogram
         spectrogram = tf.signal.stft(signal, frame_length=Nperseg, frame_step=Noverlap, fft_length=Nperseg)
@@ -222,10 +215,6 @@ one_hot_encoder = OneHotEncoder(sparse_output=False)
 y_train = one_hot_encoder.fit_transform(y_train_combined.reshape(-1, 1))
 y_test = one_hot_encoder.transform(y_test_raw.reshape(-1, 1))
 
-# Create TensorFlow datasets
-#train_dataset = tf.data.Dataset.from_tensor_slices((X_train, y_train)).shuffle(1000).batch(BATCH_SIZE)
-#validation_dataset = tf.data.Dataset.from_tensor_slices((X_test, y_test)).batch(BATCH_SIZE)
-
 # Split training data into training and validation sets
 X_train_new, X_val, y_train_new, y_val = train_test_split(X_train, y_train, test_size=0.2, random_state=42)
 # Create TensorFlow datasets
@@ -258,7 +247,6 @@ plt.xlabel("t-SNE Dimension 1")
 plt.ylabel("t-SNE Dimension 2")
 plt.grid(True)
 plt.show()
-
 """
 
 ####################################################################################################
@@ -374,7 +362,6 @@ def build_dense_model():
 if RETRAIN:
 
     model = build_dense_model()
-    
     # Callbacks
     modelname_params='best_model'+'.keras'
     early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=40, restore_best_weights=True)
@@ -387,8 +374,6 @@ if RETRAIN:
         callbacks=[early_stopping, checkpoint_callback],
         verbose=2
     )
-
-
     # Evaluate model
     test_loss, test_accuracy = model.evaluate(validation_dataset, verbose=2)
     print(f"Test Loss: {test_loss:.4f}")
@@ -407,7 +392,6 @@ if RETRAIN:
     plt.ylabel('True Labels')
     plt.title('Confusion Matrix')
     plt.show()
-
     # Classification report
     print("Classification Report:")
     print(classification_report(y_test_labels, y_pred_labels, target_names=['2um', '4um', '10um']))
