@@ -48,6 +48,11 @@ from scipy.signal import decimate
 from itertools import product
 import random 
 
+import time
+import os
+import tracemalloc
+
+
 # Hyperparameters
 RETRAIN = True
 columns = 65
@@ -293,36 +298,57 @@ plt.show()
 
 
 
+def measure_ram_usage(model, X_sample):
+    tracemalloc.start()
+    _ = model.predict(X_sample)  # Run inference on a sample
+    current, peak = tracemalloc.get_traced_memory()
+    tracemalloc.stop()
+    print(f"Peak RAM usage during inference: {peak / 1e6:.2f} MB")
 
+def measure_storage_size(model, filename="model_temp.h5"):
+    model.save(filename)
+    size = os.path.getsize(filename) / (1024 * 1024)  # Convert to MB
+    os.remove(filename)  # Clean up
+    print(f"Model storage size: {size:.2f} MB")
+    return size
 
+def measure_latency(model, X_sample, num_runs=100):
+    start_time = time.time()
+    for _ in range(num_runs):
+        _ = model.predict(X_sample)
+    avg_latency = (time.time() - start_time) / num_runs
+    print(f"Average inference latency: {avg_latency:.6f} seconds")
+    return avg_latency
 
+def count_flops(model, X_sample):
+    # Ensure the model has been built by calling it with sample input
+    _ = model(X_sample)
 
+    # Use TensorFlow Profiler to compute FLOPs
+    try:
+        concrete = tf.function(lambda x: model(x)).get_concrete_function(
+            tf.TensorSpec(X_sample.shape, model.input.dtype)
+        )
+        
+        # Profile model
+        options = tf.profiler.experimental.ProfileOptionBuilder.float_operation()
+        tf.profiler.experimental.start('logdir')  # Start profiler
+        flops = tf.profiler.experimental.profile('logdir', options=options)
+        tf.profiler.experimental.stop()  # Stop profiler
+        
+        if flops and hasattr(flops, 'total_float_ops'):
+            print(f"Estimated FLOPs: {flops.total_float_ops:,}")
+        else:
+            print("FLOP calculation returned None")
+    except Exception as e:
+        print(f"FLOP calculation error: {e}")
 
+# Example Usage
+if __name__ == "__main__":
+    #sample_input = np.random.rand(1, X_train.shape[1]).astype(np.float32)  # Generate a dummy input
+    sample_input = np.random.rand(1, 63, 65, 1).astype(np.float32)
+    print("\n--- Model Metrics ---")
+    measure_ram_usage(best_model, sample_input)
+    measure_storage_size(best_model)
+    measure_latency(best_model, sample_input)
 
-
-
-
-
-
-"""
-    # Define the model with current parameters
-    def create_model():
-        model = Sequential()
-        rows = X_train.shape[1]
-        model.add(Reshape((rows, columns, channels), input_shape=(rows, columns, channels)))
-        model.add(Conv2D(conv_1l, kernel_size=3, padding='same', activation='relu', kernel_regularizer=l2(0.0001)))
-        model.add(BatchNormalization())
-        model.add(MaxPooling2D(pool_size=2, strides=2, padding='same'))
-        model.add(Dropout(p_dropout))
-        model.add(Conv2D(conv_2l, kernel_size=3, padding='same', activation='relu', kernel_regularizer=l2(0.0001)))
-        model.add(BatchNormalization())
-        model.add(MaxPooling2D(pool_size=2, strides=2, padding='same'))
-        model.add(Dropout(p_dropout))
-        model.add(Flatten())
-        model.add(Dense(conv_2l, activation='relu', kernel_regularizer=l2(0.0001)))
-        model.add(Dropout(p_dropout))
-        model.add(Dense(classes, activation='softmax'))
-        opt = Adam(learning_rate=LEARNING_RATE)
-        model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
-        return model
-"""

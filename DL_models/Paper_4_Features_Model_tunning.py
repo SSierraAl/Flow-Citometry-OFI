@@ -53,7 +53,9 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix
 from itertools import product
-
+import time
+import os
+import tracemalloc
 
 
 
@@ -345,5 +347,61 @@ plt.show()
 
 
 
+def measure_ram_usage(model, X_sample):
+    tracemalloc.start()
+    _ = model.predict(X_sample)  # Run inference on a sample
+    current, peak = tracemalloc.get_traced_memory()
+    tracemalloc.stop()
+    print(f"Peak RAM usage during inference: {peak / 1e6:.2f} MB")
+
+def measure_storage_size(model, filename="model_temp.h5"):
+    model.save(filename)
+    size = os.path.getsize(filename) / (1024 * 1024)  # Convert to MB
+    os.remove(filename)  # Clean up
+    print(f"Model storage size: {size:.2f} MB")
+    return size
+
+def measure_latency(model, X_sample, num_runs=100):
+    start_time = time.time()
+    for _ in range(num_runs):
+        _ = model.predict(X_sample)
+    avg_latency = (time.time() - start_time) / num_runs
+    print(f"Average inference latency: {avg_latency:.6f} seconds")
+    return avg_latency
+
+def count_flops(model, X_sample):
+    # Ensure the model has been built by calling it with sample input
+    _ = model(X_sample)
+
+    # Use TensorFlow Profiler to compute FLOPs
+    try:
+        concrete = tf.function(lambda x: model(x)).get_concrete_function(
+            tf.TensorSpec(X_sample.shape, model.input.dtype)
+        )
+        
+        # Profile model
+        options = tf.profiler.experimental.ProfileOptionBuilder.float_operation()
+        tf.profiler.experimental.start('logdir')  # Start profiler
+        flops = tf.profiler.experimental.profile('logdir', options=options)
+        tf.profiler.experimental.stop()  # Stop profiler
+        
+        if flops and hasattr(flops, 'total_float_ops'):
+            print(f"Estimated FLOPs: {flops.total_float_ops:,}")
+        else:
+            print("FLOP calculation returned None")
+    except Exception as e:
+        print(f"FLOP calculation error: {e}")
+
+# Example Usage
+if __name__ == "__main__":
+    # Assume `best_model` is your trained CNN model
+    sample_input = np.random.rand(1, X_scaled.shape[1]).astype(np.float32)  # Add batch dimension
+  # Generate a dummy input
+    
+    print("\n--- Model Metrics ---")
+    measure_ram_usage(best_model, sample_input)
+    measure_storage_size(best_model)
+    measure_latency(best_model, sample_input)
+    count_flops(best_model, sample_input)
 
 
