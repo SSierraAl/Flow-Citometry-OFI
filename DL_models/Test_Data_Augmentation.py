@@ -6,6 +6,7 @@ from scipy.io import wavfile
 from scipy.ndimage import shift
 from scipy.signal import resample
 from scipy.signal import decimate
+from matplotlib.ticker import FuncFormatter
 # Load signal function
 def load_signal(file_path):
     return np.load(file_path)
@@ -58,6 +59,29 @@ inverted_signal = invert_signal(original_signal)
 interpolated_signal = random_interpolation(original_signal)
 bitwise_signal = bitwise_downsample(original_signal, resolution=50)
 sampling_downsampled_signal = sampling_rate_downsample(original_signal.copy(), k=3)
+
+
+
+plt.plot(original_signal, color='royalblue')  # Use a blue color similar to 'Blues' cmap
+  # Title with Times New Roman font
+plt.xlabel('[mS]', fontsize=38, fontname='Times New Roman')  # Label X-axis with Times New Roman font
+plt.ylabel('[mV]', fontsize=38, fontname='Times New Roman')  # Label Y-axis with Times New Roman font
+
+# Increase font size for ticks
+# Create a formatter to divide x-ticks by 1000
+def divide_by_1000(x, pos):
+    return x / 2000
+
+# Set the x-axis labels formatter
+plt.gca().xaxis.set_major_formatter(FuncFormatter(divide_by_1000))
+plt.xticks(fontsize=38, fontname='Times New Roman')
+plt.yticks(fontsize=38, fontname='Times New Roman')
+
+plt.plot(original_signal)
+plt.grid()
+plt.show()
+
+
 
 # Plot all signals
 plt.figure(figsize=(15, 12))

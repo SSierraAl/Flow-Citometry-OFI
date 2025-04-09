@@ -29,7 +29,8 @@ def Set_Reader_Data(path, parameters):
     Counter_Column = 0
     selected_column = columnas[Counter_Column]
     data_Y = Original_Dataframe[selected_column]
-    data_X = Original_Dataframe.index / Adq_Freq * len(data_Y)
+    data_X = (np.arange(len(data_Y)) / Adq_Freq) * 1000  # Convert to milliseconds
+
     
     # ColumnDataSource Setup
     def create_source(data_X, data_Y):
@@ -62,7 +63,7 @@ def Set_Reader_Data(path, parameters):
         line = p.line('data_x_axis', 'daya_y_axis', source=source, line_width=2, line_color=color)
         if hover:
             p.add_tools(HoverTool(tooltips=[(x_axis, "@data_x_axis"), (y_axis, "@daya_y_axis")]))
-        p.xaxis.formatter = NumeralTickFormatter(format="0a")
+        p.xaxis.formatter = NumeralTickFormatter(format="0.00a")
         return p, line
 
     # Figures with glyphs
